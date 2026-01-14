@@ -1,0 +1,542 @@
+<!-- START OF FILE Digital_Zhare2.html -->
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ग्रामपंचायत झरे-२ | डिजिटल ग्रामपंचायत</title>
+    
+    <!-- Google Fonts: Noto Sans Devanagari for Marathi & Montserrat for numbers/English -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;600;700;800&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css for entrance animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root {
+            --brand-blue: #0f172a; /* Deep Navy Blue */
+            --accent-gold: #b45309; /* Golden Saffron */
+            --light-gold: #fef3c7;
+            --pure-white: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Noto Sans Devanagari', sans-serif; 
+            background-color: #f1f5f9; 
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- TOP HEADER --- */
+        .top-nav {
+            background: var(--brand-blue);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        .top-nav .flex-box { display: flex; justify-content: space-between; align-items: center; }
+
+        /* --- MAIN HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-section { display: flex; align-items: center; gap: 20px; }
+        .logo-main { height: 85px; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); }
+        
+        .title-group h1 { 
+            font-size: 1.8rem; 
+            color: var(--brand-blue); 
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .title-group p { color: var(--accent-gold); font-weight: 700; letter-spacing: 1px; font-size: 0.9rem; }
+
+        /* --- NAVIGATION --- */
+        nav { background: var(--brand-blue); margin-top: 10px; border-radius: 50px; }
+        .nav-links { display: flex; justify-content: center; list-style: none; }
+        .nav-links li a { 
+            display: block; 
+            padding: 15px 20px; 
+            color: white; 
+            text-decoration: none; 
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+        .nav-links li a:hover { color: var(--accent-gold); background: rgba(255,255,255,0.05); }
+
+        /* --- HERO SLIDER --- */
+        .hero-wrap {
+            height: 550px;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-slide.active { opacity: 0.6; }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 5;
+            width: 100%;
+        }
+        .hero-text h2 { font-size: 4rem; font-weight: 900; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .hero-text p { font-size: 1.5rem; background: rgba(180, 83, 9, 0.8); display: inline-block; padding: 5px 25px; border-radius: 50px; }
+
+        /* --- STATS SECTION (Unique Design) --- */
+        .stats-section { padding: 80px 0; background: white; margin-top: -50px; position: relative; z-index: 10; border-radius: 60px 60px 0 0; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .stat-item { 
+            text-align: center; 
+            padding: 30px; 
+            border-radius: 20px; 
+            background: var(--bg-gradient); 
+            transition: 0.3s;
+            border-bottom: 5px solid var(--accent-gold);
+        }
+        .stat-item:hover { transform: translateY(-10px); }
+        .stat-item i { font-size: 2.5rem; color: var(--brand-blue); margin-bottom: 15px; }
+        .stat-count { display: block; font-size: 2rem; font-weight: 800; font-family: 'Montserrat', sans-serif; color: var(--brand-blue); }
+        .stat-label { font-weight: 700; color: var(--text-muted); font-size: 0.9rem; }
+
+        /* --- SECTION TITLES --- */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--brand-blue); position: relative; padding-bottom: 15px; }
+        .section-header h2::after { content: ''; width: 100px; height: 5px; background: var(--accent-gold); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 10px; }
+
+        /* --- LEADERSHIP (NEW CARDS) --- */
+        .leader-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 40px 0; }
+        .leader-card {
+            width: 350px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            border: 1px solid #eee;
+        }
+        .leader-img-box { height: 400px; width: 100%; overflow: hidden; }
+        .leader-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .leader-card:hover .leader-img-box img { transform: scale(1.1); }
+        .leader-info {
+            padding: 25px;
+            text-align: center;
+            background: linear-gradient(to top, var(--brand-blue), #1e293b);
+            color: white;
+        }
+        .leader-info h3 { font-size: 1.4rem; margin-bottom: 5px; }
+        .leader-tag { 
+            background: var(--accent-gold); 
+            padding: 4px 15px; 
+            border-radius: 20px; 
+            font-size: 0.8rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+        }
+
+        /* --- STAFF GRID --- */
+        .staff-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
+            padding: 40px 0;
+        }
+        .staff-item {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--accent-gold);
+            transition: 0.3s;
+        }
+        .staff-item:hover { transform: translateX(10px); background: var(--light-gold); }
+        .staff-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .staff-details h4 { font-size: 1rem; color: var(--brand-blue); }
+        .staff-details p { font-size: 0.85rem; color: var(--accent-gold); font-weight: 700; }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px 0;
+        }
+        .gallery-item {
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover img { transform: scale(1.2) rotate(3deg); }
+        .gallery-overlay {
+            position: absolute; top:0; left:0; width:100%; height:100%;
+            background: rgba(15, 23, 42, 0.6);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: 0.3s; color: white;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--brand-blue); color: white; padding: 80px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-col h3 { font-size: 1.5rem; margin-bottom: 25px; border-left: 4px solid var(--accent-gold); padding-left: 15px; }
+        .footer-col p { color: #94a3b8; line-height: 1.8; margin-bottom: 10px; }
+        .contact-link { color: var(--accent-gold); font-weight: 700; text-decoration: none; }
+        
+        .copy-bar { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.8rem; color: #64748b; }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-text h2 { font-size: 2.2rem; }
+            .logo-main { height: 60px; }
+            .title-group h1 { font-size: 1.2rem; }
+            .nav-links { flex-direction: column; text-align: center; }
+            .leader-card { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAV -->
+    <div class="top-nav">
+        <div class="container">
+            <div class="flex-box">
+                <div><i class="fas fa-landmark"></i> महाराष्ट्र शासन | सिंधुदुर्ग जिल्हा</div>
+                <div><i class="fas fa-calendar-alt"></i> <span id="currentDate"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="https://anikfin.com/Zare/Gallary/GP.png" alt="GP Logo" class="logo-main">
+                    <div class="title-group">
+                        <p>आदर्श ग्रामपंचायत</p>
+                        <h1>ग्रामपंचायत झरे - २</h1>
+                        <small>ता. दोडामार्ग, जि. सिंधुदुर्ग</small>
+                    </div>
+                </div>
+                <div class="logo-section hide-mobile">
+                    <img src="https://anikfin.com/Ker/zp.png" alt="ZP Logo" style="height: 70px;">
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#"><i class="fas fa-home"></i> मुख्यपृष्ठ</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> आमच्याबद्दल</a></li>
+                    <li><a href="#stats"><i class="fas fa-chart-bar"></i> गाव सांख्यिकी</a></li>
+                    <li><a href="#leaders"><i class="fas fa-users"></i> पदाधिकारी</a></li>
+                    <li><a href="#gallery"><i class="fas fa-images"></i> गॅलरी</a></li>
+                    <li><a href="#contact"><i class="fas fa-phone-alt"></i> संपर्क</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SLIDER -->
+    <section class="hero-wrap">
+        <div id="slider-container">
+            <!-- Background images will load via JS -->
+        </div>
+        <div class="hero-text animate__animated animate__fadeInUp">
+            <p>निसर्गरम्य आणि प्रगत</p>
+            <h2>झरे - २</h2>
+            <p>स्वच्छ गाव, सुंदर गाव, आमचे झरे गाव</p>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>गावची सांख्यिकी</h2>
+                <p>झरे-२ ग्रामपंचायतीची महत्त्वाची माहिती</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <span class="stat-count">851</span>
+                    <span class="stat-label">एकूण लोकसंख्या</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-female"></i>
+                    <span class="stat-count">418</span>
+                    <span class="stat-label">गावातील महिला</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-male"></i>
+                    <span class="stat-count">433</span>
+                    <span class="stat-label">गावातील पुरुष</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-id-card"></i>
+                    <span class="stat-count">816</span>
+                    <span class="stat-label">मतदार संख्या</span>
+                </div>
+            </div>
+            
+            <div class="stats-grid" style="margin-top: 30px;">
+                <div class="stat-item">
+                    <i class="fas fa-school"></i>
+                    <span class="stat-count">1 / 1</span>
+                    <span class="stat-label">प्राथमिक / माध्यमिक शाळा</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-baby"></i>
+                    <span class="stat-count">2</span>
+                    <span class="stat-label">अंगणवाडी संख्या</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-faucet"></i>
+                    <span class="stat-count">2</span>
+                    <span class="stat-label">नळयोजना</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-hospital-alt"></i>
+                    <span class="stat-count">1</span>
+                    <span class="stat-label">आरोग्य उपकेंद्र</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEADERS SECTION -->
+    <section id="leaders" style="padding: 80px 0; background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2>ग्रामपंचायत पदाधिकारी</h2>
+                <p>लोकनियुक्त प्रतिनिधी</p>
+            </div>
+            
+            <div class="leader-container">
+                <!-- Sarpanch -->
+                <div class="leader-card">
+                    <div class="leader-img-box">
+                        <img src="https://www.anikfin.com/Zare/Shruti.jpg" alt="Shruti Desai">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-tag">सरपंच</span>
+                        <h3>सौ. श्रुती विठ्ठल देसाई</h3>
+                    </div>
+                </div>
+                
+                <!-- Upsarpanch -->
+                <div class="leader-card">
+                    <div class="leader-img-box">
+                        <img src="https://www.anikfin.com/Zare/Arjun.jpg" alt="Arjun Ainodkar">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-tag">उपसरपंच</span>
+                        <h3>श्री. अर्जुन कृष्णा आयनोडकर</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Members Grid -->
+            <div class="staff-grid">
+                <div class="staff-item">
+                    <img src="https://www.anikfin.com/Zare/Approva.jpg" class="staff-avatar">
+                    <div class="staff-details">
+                        <h4>सौ. अपूर्वा अभय ठाकूर</h4>
+                        <p>सदस्य</p>
+                    </div>
+                </div>
+                <div class="staff-item">
+                    <img src="https://www.anikfin.com/Zare/Purva.jpg" class="staff-avatar">
+                    <div class="staff-details">
+                        <h4>सौ. पूर्वा विठ्ठल गवस</h4>
+                        <p>सदस्य</p>
+                    </div>
+                </div>
+                <div class="staff-item">
+                    <img src="https://www.anikfin.com/Zare/Yogita.jpg" class="staff-avatar">
+                    <div class="staff-details">
+                        <h4>सौ. योगिता योगेश शेटवे</h4>
+                        <p>सदस्य</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STAFF SECTION -->
+    <section style="padding: 80px 0; background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>प्रशासकीय कर्मचारी</h2>
+                <p>सेवेसाठी सदैव तत्पर</p>
+            </div>
+            
+            <div class="staff-grid">
+                <div class="staff-item">
+                    <img src="https://www.anikfin.com/Zare/Janardhan.jpg" class="staff-avatar">
+                    <div class="staff-details">
+                        <h4>श्री. जनार्दन बाबाजी खानोलकर</h4>
+                        <p>ग्रामपंचायत अधिकारी</p>
+                    </div>
+                </div>
+                <div class="staff-item">
+                    <img src="https://www.anikfin.com/Zare/Manjusha.jpg" class="staff-avatar">
+                    <div class="staff-details">
+                        <h4>श्रीमती मंजुषा मोहन घोगळे</h4>
+                        <p>डेटा ऑपरेटर</p>
+                    </div>
+                </div>
+                <div class="staff-item">
+                    <img src="https://www.anikfin.com/Zare/Akshita.jpg" class="staff-avatar">
+                    <div class="staff-details">
+                        <h4>सौ. अक्षता अमरनाथ सावंत</h4>
+                        <p>हंगामी क्लर्क</p>
+                    </div>
+                </div>
+                <div class="staff-item">
+                    <img src="https://www.anikfin.com/Zare/Arpita.jpg" class="staff-avatar">
+                    <div class="staff-details">
+                        <h4>सौ. अर्पिता आनंद सावंत</h4>
+                        <p>रोजगार सेवक</p>
+                    </div>
+                </div>
+                <div class="staff-item">
+                    <img src="https://www.anikfin.com/Zare/Deepak.jpg" class="staff-avatar">
+                    <div class="staff-details">
+                        <h4>श्री. दिपक रामचंद राणे</h4>
+                        <p>शिपाई</p>
+                    </div>
+                </div>
+                <div class="staff-item">
+                    <img src="https://www.anikfin.com/Zare/Ulhas.jpg" class="staff-avatar">
+                    <div class="staff-details">
+                        <h4>श्री. उल्हास सावंत</h4>
+                        <p>कर्मचारी</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" style="padding: 80px 0; background: #f1f5f9;">
+        <div class="container">
+            <div class="section-header">
+                <h2>छायाचित्र गॅलरी</h2>
+                <p>गावातील काही क्षणचित्रे आणि विकासकामे</p>
+            </div>
+            <div class="gallery-grid" id="photoGallery">
+                <!-- Loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ग्रामपंचायत झरे - २</h3>
+                    <p>मु. पो. झरे - २, तालुका दोडामार्ग, जिल्हा सिंधुदुर्ग - ४१६५१२</p>
+                    <p>आमचा गाव, आमचा अभिमान. सर्वांगीण विकासासाठी आम्ही कटिबद्ध आहोत.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>उपयुक्त माहिती</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> तलाठी कार्यालय: उपलब्ध</p>
+                    <p><i class="fas fa-mail-bulk"></i> पोस्ट ऑफिस: झरे २</p>
+                    <p><i class="fas fa-tint"></i> एकूण विहिरी: ५</p>
+                </div>
+                <div class="footer-col">
+                    <h3>संपर्क साधा</h3>
+                    <p>ईमेल: <a href="mailto:info@zare2gp.in" class="contact-link">info@zare2gp.in</a></p>
+                    <p>वेबसाईट: <a href="#" class="contact-link">www.zare2gp.in</a></p>
+                </div>
+            </div>
+            
+            <div class="copy-bar">
+                <p>&copy; 2025 ग्रुप ग्रामपंचायत झरे-२. सर्व हक्क राखीव. | Design by Umesh (8007773888)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Current Date Display
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').innerText = new Date().toLocaleDateString('mr-IN', dateOptions);
+
+        // 2. Hero Slider Logic
+        const sliderImgs = [
+            "https://anikfin.com/Zare/Gallary/01.jpg",
+            "https://anikfin.com/Zare/Gallary/03.jpg",
+            "https://anikfin.com/Zare/Gallary/05.jpg",
+            "https://anikfin.com/Zare/Gallary/08.jpg"
+        ];
+        
+        const sliderCont = document.getElementById('slider-container');
+        sliderImgs.forEach((img, idx) => {
+            const div = document.createElement('div');
+            div.className = `hero-slide ${idx === 0 ? 'active' : ''}`;
+            div.style.backgroundImage = `url('${img}')`;
+            sliderCont.appendChild(div);
+        });
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000);
+
+        // 3. Dynamic Gallery Loading (01.jpg to 10.jpg)
+        const galleryGrid = document.getElementById('photoGallery');
+        for(let i=1; i<=10; i++) {
+            const imgNum = i < 10 ? `0${i}` : i;
+            const item = `
+                <div class="gallery-item animate__animated animate__zoomIn">
+                    <img src="https://anikfin.com/Zare/Gallary/${imgNum}.jpg" alt="Zhare Gallery ${i}">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+            `;
+            galleryGrid.innerHTML += item;
+        }
+    </script>
+</body>
+</html>
+<!-- END OF FILE -->
