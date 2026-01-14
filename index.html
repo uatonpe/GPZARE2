@@ -5,367 +5,376 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ग्रामपंचायत झरे - २ | अधिकृत डिजिटल पोर्टल</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Noto Sans for Marathi & Poppins for English Elements -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Icons & Libraries -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- AOS (Animate on Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* --- 1. CSS VARIABLES (Standard Govt Theme) --- */
+        /* ==========================================================================
+           1. CSS VARIABLES (शासकीय कलर पॅलेट)
+           ========================================================================== */
         :root {
-            --primary: #002e5b;        /* Deep Royal Blue */
+            --primary: #002e5b;        /* Deep Govt Blue */
             --primary-light: #004a8f;
-            --accent: #ff8c00;         /* Bright Saffron */
+            --accent: #ff8c00;         /* Saffron Orange */
             --accent-dark: #cc7000;
-            --secondary: #2e7d32;      /* Eco Green */
-            --text-dark: #1a202c;
-            --text-light: #4a5568;
+            --success: #2e7d32;        /* Nature Green */
+            --text-dark: #0f172a;      /* Dark Slate */
+            --text-muted: #64748b;     /* Gray Text */
             --white: #ffffff;
-            --bg-body: #f0f4f8;
-            --bg-card: rgba(255, 255, 255, 0.95);
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --bg-body: #f8fafc;
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
             --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1);
-            --glass: rgba(255, 255, 255, 0.8);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- 2. GLOBAL RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        /* ==========================================================================
+           2. GLOBAL STYLES
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { scroll-behavior: smooth; }
         body { 
             font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
             background-color: var(--bg-body); 
             color: var(--text-dark);
-            line-height: 1.7;
             overflow-x: hidden;
+            line-height: 1.8;
         }
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
-        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 1320px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 25px; }
-
-        /* --- 3. TOP UTILITY BAR --- */
-        .top-utility {
-            background: linear-gradient(90deg, #001a33 0%, #003366 100%);
-            color: var(--white);
+        /* ==========================================================================
+           3. TOP UTILITY BAR
+           ========================================================================== */
+        .top-nav {
+            background: linear-gradient(90deg, #001f3f 0%, #003366 100%);
+            color: white;
             padding: 10px 0;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border-bottom: 3px solid var(--accent);
+            position: relative;
+            z-index: 1002;
         }
         .top-flex { display: flex; justify-content: space-between; align-items: center; }
-        .gov-branding span { margin-right: 20px; font-weight: 500; }
-        .utility-links a { margin-left: 20px; opacity: 0.9; }
-        .utility-links a:hover { opacity: 1; color: var(--accent); }
+        .top-info span { margin-right: 20px; font-weight: 500; }
+        .top-info i { color: var(--accent); margin-right: 5px; }
+        .top-social a { margin-left: 15px; font-size: 1rem; opacity: 0.8; }
+        .top-social a:hover { opacity: 1; color: var(--accent); }
 
-        /* --- 4. MAIN HEADER --- */
+        /* ==========================================================================
+           4. MAIN HEADER & LOGO
+           ========================================================================== */
         header {
             background: var(--white);
             padding: 15px 0;
+            box-shadow: var(--shadow-md);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-md);
         }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .brand-box { display: flex; align-items: center; gap: 20px; }
-        .main-logo { height: 90px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
-        .brand-text p { 
-            color: var(--accent); 
-            font-weight: 800; 
-            font-size: 0.9rem; 
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-        .brand-text h1 { 
-            font-size: 1.8rem; 
-            color: var(--primary); 
-            font-weight: 900; 
-            line-height: 1.1;
-        }
-        .zp-logo img { height: 75px; }
+        .header-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .logo-box { display: flex; align-items: center; gap: 20px; }
+        .main-logo { height: 95px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+        .brand-titles p { color: var(--accent); font-weight: 900; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: -5px; }
+        .brand-titles h1 { font-size: 2rem; color: var(--primary); font-weight: 900; line-height: 1.1; }
+        .brand-titles small { font-weight: 700; color: var(--text-muted); font-size: 0.9rem; }
+        .zp-logo img { height: 80px; }
 
-        /* --- 5. NAVIGATION & MOBILE MENU --- */
-        nav.desktop-nav { 
-            background: var(--primary); 
-            margin-top: 15px; 
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-        }
-        .nav-list { display: flex; }
+        /* ==========================================================================
+           5. NAVIGATION (DESKTOP & MOBILE)
+           ========================================================================== */
+        .nav-bg { background: var(--primary); margin-top: 15px; border-radius: 10px; overflow: hidden; }
+        .nav-list { display: flex; justify-content: center; }
         .nav-item a { 
-            color: var(--white); 
-            padding: 18px 25px; 
-            display: block; 
-            font-weight: 600; 
-            font-size: 0.95rem;
-            text-transform: uppercase;
-        }
-        .nav-item a:hover { background: var(--accent); color: var(--white); }
-
-        /* Mobile Menu Toggle */
-        .mobile-toggle { display: none; font-size: 1.8rem; color: var(--primary); cursor: pointer; }
-        
-        /* Mobile Overlay Menu */
-        .mobile-menu-overlay {
-            position: fixed; top: 0; left: -100%; width: 300px; height: 100%;
-            background: var(--white); z-index: 1001; transition: 0.5s;
-            box-shadow: 10px 0 30px rgba(0,0,0,0.2);
-            padding: 40px 20px;
-        }
-        .mobile-menu-overlay.active { left: 0; }
-        .mobile-menu-overlay ul li { margin-bottom: 15px; border-bottom: 1px solid #eee; }
-        .mobile-menu-overlay ul li a { display: block; padding: 10px; font-weight: 700; color: var(--primary); }
-        .close-menu { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: var(--accent); }
-        .overlay-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 1000; display: none;
-        }
-        .overlay-bg.active { display: block; }
-
-        /* --- 6. HERO SECTION --- */
-        .hero-slider {
+            color: white; padding: 18px 25px; display: block; 
+            font-weight: 600; font-size: 0.95rem; text-transform: uppercase;
             position: relative;
-            height: 650px;
-            background: #000;
-            overflow: hidden;
         }
-        .slide {
-            position: absolute; width: 100%; height: 100%;
-            opacity: 0; transition: opacity 1.5s ease;
+        .nav-item a:hover { background: var(--accent); }
+        
+        /* Mobile Menu Toggle */
+        .mobile-btn { display: none; font-size: 2rem; color: var(--primary); cursor: pointer; }
+
+        /* Mobile Slide-in Menu */
+        .side-menu {
+            position: fixed; top: 0; left: -100%; width: 85%; height: 100%;
+            background: var(--white); z-index: 2000; transition: 0.5s;
+            box-shadow: 10px 0 50px rgba(0,0,0,0.3);
+            padding: 40px 25px;
+        }
+        .side-menu.active { left: 0; }
+        .side-menu .close-btn { position: absolute; top: 20px; right: 25px; font-size: 1.8rem; color: var(--accent); }
+        .side-nav-list { margin-top: 50px; }
+        .side-nav-list li { margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
+        .side-nav-list a { display: block; padding: 12px 0; font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 1999; display: none;
+        }
+        .menu-overlay.active { display: block; }
+
+        /* ==========================================================================
+           6. HERO SLIDER
+           ========================================================================== */
+        .hero { position: relative; height: 600px; background: #000; overflow: hidden; }
+        .slide { 
+            position: absolute; width: 100%; height: 100%; 
+            opacity: 0; transition: opacity 1.5s ease-in-out; 
             display: flex; align-items: center; justify-content: center;
         }
         .slide.active { opacity: 1; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
-        
-        .hero-caption {
-            position: absolute; text-align: center; color: var(--white);
-            max-width: 900px; padding: 0 20px; z-index: 5;
+        .slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65); }
+        .hero-text {
+            position: absolute; text-align: center; color: white; width: 90%; max-width: 900px; z-index: 10;
         }
-        .hero-caption h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; text-shadow: 2px 4px 10px rgba(0,0,0,0.3); }
-        .hero-caption p { font-size: 1.4rem; font-weight: 500; margin-bottom: 35px; opacity: 0.9; }
-
-        /* --- 7. NEWS TICKER --- */
-        .ticker-bar { background: var(--white); padding: 15px 0; border-bottom: 1px solid #ddd; }
-        .ticker-flex { display: flex; align-items: center; }
-        .ticker-title { 
-            background: #d32f2f; color: white; padding: 6px 20px; 
-            font-weight: 800; border-radius: 4px; margin-right: 20px;
-            white-space: nowrap; position: relative;
+        .hero-text h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; text-shadow: 2px 4px 15px rgba(0,0,0,0.5); }
+        .hero-text p { font-size: 1.5rem; font-weight: 500; opacity: 0.9; margin-bottom: 30px; }
+        .btn-cta { 
+            background: var(--accent); color: white; padding: 15px 40px; 
+            border-radius: 50px; font-weight: 800; display: inline-block;
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.4);
         }
-        .ticker-title::after { content: ''; position: absolute; right: -10px; top: 10px; border-left: 10px solid #d32f2f; border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
 
-        /* --- 8. SERVICE ICONS GRID (THE IMPRESSIVE PART) --- */
-        .section-padding { padding: 100px 0; }
-        .center-title { text-align: center; margin-bottom: 60px; }
-        .center-title span { color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
-        .center-title h2 { font-size: 2.8rem; color: var(--primary); font-weight: 800; }
-        .title-line { width: 80px; height: 5px; background: var(--accent); margin: 15px auto; border-radius: 10px; }
+        /* ==========================================================================
+           7. NEWS TICKER
+           ========================================================================== */
+        .news-ticker { background: white; border-bottom: 2px solid #edf2f7; padding: 15px 0; }
+        .ticker-wrap { display: flex; align-items: center; }
+        .ticker-head { 
+            background: #e11d48; color: white; padding: 6px 20px; border-radius: 5px;
+            font-weight: 800; font-size: 0.9rem; margin-right: 20px; white-space: nowrap;
+            position: relative; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+        marquee { font-weight: 600; color: #334155; }
+
+        /* ==========================================================================
+           8. SERVICE ICONS (12 BOXES - TALL LOOK)
+           ========================================================================== */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header span { color: var(--accent); font-weight: 900; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+        .section-header h2 { font-size: 2.8rem; color: var(--primary); font-weight: 800; position: relative; display: inline-block; padding-bottom: 15px; }
+        .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 5px; background: var(--accent); border-radius: 10px; }
 
         .service-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 25px;
+            padding-bottom: 80px;
         }
-        .service-item {
-            background: var(--white);
-            padding: 40px 25px;
+        .s-card {
+            background: white;
+            padding: 45px 25px;
             border-radius: 20px;
             text-align: center;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #eef2f6;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
-            cursor: pointer;
-            position: relative;
+        }
+        .s-card:hover { transform: translateY(-15px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+        .s-icon-box {
+            width: 85px; height: 85px; background: #f0f7ff; color: var(--primary);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 25px; font-size: 32px; transition: 0.4s;
+        }
+        .s-card:hover .s-icon-box { background: var(--primary); color: white; transform: rotateY(360deg); }
+        .s-card h3 { font-size: 1.3rem; color: var(--primary); font-weight: 800; margin-bottom: 12px; }
+        .s-card p { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
+
+        /* ==========================================================================
+           9. VILLAGE STATISTICS (DASHBOARD LOOK)
+           ========================================================================== */
+        .stats-section { background: #001a33; padding: 100px 0; color: white; }
+        .stats-table-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .service-item::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%;
-            background: linear-gradient(0deg, rgba(0,46,91,0.05), transparent);
-            transition: 0.4s; z-index: 0;
+        .stat-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
         }
-        .service-item:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent);
-        }
-        .service-item:hover::after { height: 100%; }
+        .stat-row:hover { background: rgba(255, 255, 255, 0.1); }
+        .stat-label { display: flex; align-items: center; gap: 20px; font-size: 1.1rem; font-weight: 600; }
+        .stat-label i { width: 30px; text-align: center; color: var(--accent); font-size: 1.3rem; }
+        .stat-value { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 
-        .s-icon {
-            width: 85px; height: 85px; background: #f0f7ff;
-            color: var(--primary); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 25px; font-size: 32px;
-            transition: 0.4s; position: relative; z-index: 1;
-        }
-        .service-item:hover .s-icon { background: var(--primary); color: var(--white); transform: rotateY(360deg); }
-        .service-item h3 { font-size: 1.3rem; color: var(--primary); font-weight: 800; margin-bottom: 12px; position: relative; z-index: 1; }
-        .service-item p { font-size: 0.95rem; color: var(--text-light); font-weight: 500; line-height: 1.4; position: relative; z-index: 1; }
+        /* ==========================================================================
+           10. STATE LEADERSHIP
+           ========================================================================== */
+        .leaders-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 100px; }
+        .leader-card { background: white; border-radius: 25px; overflow: hidden; box-shadow: var(--shadow-md); text-align: center; }
+        .leader-img { height: 380px; overflow: hidden; background: #f8fafc; }
+        .leader-img img { width: 100%; height: 100%; object-fit: contain; }
+        .leader-body { padding: 25px; }
+        .leader-role { color: var(--accent); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; display: block; }
+        .leader-name { font-size: 1.4rem; color: var(--primary); font-weight: 800; margin-top: 5px; }
 
-        /* --- 9. STATISTICS BAR --- */
-        .stats-banner {
-            background: linear-gradient(135deg, #002e5b 0%, #001a33 100%);
-            padding: 80px 0; color: var(--white);
-        }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
-        .stat-card i { font-size: 45px; color: var(--accent); margin-bottom: 20px; }
-        .stat-card h4 { font-size: 3rem; font-weight: 900; line-height: 1; }
-        .stat-card p { font-size: 1.1rem; font-weight: 600; opacity: 0.8; margin-top: 10px; }
+        /* ==========================================================================
+           11. LOCAL TEAM (ALL 11 MEMBERS)
+           ========================================================================== */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .member-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm); transition: 0.4s; border: 1px solid #f1f5f9; }
+        .member-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+        .m-image { height: 320px; background: #fff; padding: 10px; }
+        .m-image img { width: 100%; height: 100%; object-fit: contain; border-radius: 15px; }
+        .m-info { padding: 20px; text-align: center; border-top: 5px solid var(--primary); }
+        .m-info h4 { font-size: 1.15rem; font-weight: 800; color: var(--primary); }
+        .m-info span { background: #fff7ed; color: #c2410c; padding: 4px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; display: inline-block; margin-top: 10px; }
 
-        /* --- 10. LEADERSHIP / TEAM --- */
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
-        .member-box {
-            background: var(--white);
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            border: 1px solid #eee;
-        }
-        .member-box:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
-        .m-img { height: 350px; background: #fff; overflow: hidden; padding: 10px; }
-        .m-img img { width: 100%; height: 100%; object-fit: contain; border-radius: 20px; }
-        .m-info { padding: 25px; text-align: center; background: #fff; position: relative; }
-        .m-info::before {
-            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 40px; height: 4px; background: var(--accent); border-radius: 10px;
-        }
-        .m-info h4 { font-size: 1.25rem; color: var(--primary); font-weight: 800; margin-top: 10px; }
-        .m-info span { 
-            display: inline-block; margin-top: 8px; padding: 5px 20px; 
-            background: #fff8f0; color: #e67e22; border-radius: 50px; 
-            font-size: 0.85rem; font-weight: 800; border: 1px solid #fee2e2;
-        }
+        /* ==========================================================================
+           12. GALLERY GRID
+           ========================================================================== */
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .gallery-item { height: 260px; border-radius: 15px; overflow: hidden; cursor: pointer; position: relative; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover img { transform: scale(1.1); filter: brightness(0.7); }
+        .gallery-overlay { position: absolute; bottom: 0; width: 100%; padding: 15px; background: rgba(0,46,91,0.8); color: white; font-size: 0.8rem; text-align: center; opacity: 0; transition: 0.3s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
 
-        /* --- 11. GALLERY --- */
-        .gallery-wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .gallery-item { height: 260px; border-radius: 15px; overflow: hidden; position: relative; cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .gallery-item:hover img { transform: scale(1.15); filter: brightness(0.7); }
-        .gallery-info {
-            position: absolute; bottom: 0; width: 100%; padding: 15px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white; font-size: 0.85rem; opacity: 0; transition: 0.3s;
-        }
-        .gallery-item:hover .gallery-info { opacity: 1; }
+        /* ==========================================================================
+           13. GOVERNMENT LOGOS
+           ========================================================================== */
+        .gov-logos { background: #f1f5f9; padding: 60px 0; border-top: 1px solid #e2e8f0; }
+        .logo-flex { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; }
+        .gov-item { text-align: center; width: 180px; }
+        .gov-item img { height: 60px; margin-bottom: 15px; transition: 0.3s; filter: grayscale(1); }
+        .gov-item:hover img { filter: grayscale(0); transform: scale(1.1); }
+        .gov-item p { font-size: 0.85rem; font-weight: 800; color: var(--primary); }
 
-        /* --- 12. FOOTER --- */
-        footer { background: #001226; color: #cbd5e0; padding: 100px 0 30px; }
+        /* ==========================================================================
+           14. FOOTER
+           ========================================================================== */
+        footer { background: #001226; color: #cbd5e1; padding: 100px 0 30px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 60px; }
-        .f-col h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 30px; font-weight: 800; border-left: 5px solid var(--accent); padding-left: 15px; }
-        .f-about p { font-size: 1.05rem; line-height: 1.8; }
+        .f-col h3 { color: white; margin-bottom: 30px; border-left: 5px solid var(--accent); padding-left: 15px; font-size: 1.5rem; font-weight: 800; }
         .f-links li { margin-bottom: 15px; }
         .f-links a:hover { color: var(--accent); padding-left: 10px; }
-        .f-contact p { margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; }
-        .f-contact i { color: var(--accent); font-size: 1.2rem; margin-top: 5px; }
-        .footer-bottom { 
-            margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); 
-            text-align: center; font-size: 0.9rem; opacity: 0.8;
-        }
+        .f-contact p { margin-bottom: 20px; display: flex; gap: 15px; align-items: flex-start; }
+        .f-contact i { color: var(--accent); font-size: 1.2rem; }
+        .copyright { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
 
-        /* --- 13. MOBILE & TABLET RESPONSIVE (CRITICAL) --- */
+        /* ==========================================================================
+           15. MOBILE & TABLET RESPONSIVE (BOX LOOK ONE-BY-ONE)
+           ========================================================================== */
         @media (max-width: 1200px) {
             .service-grid { grid-template-columns: repeat(3, 1fr); }
-            .hero-caption h2 { font-size: 2.8rem; }
+            .hero-text h2 { font-size: 2.8rem; }
         }
 
         @media (max-width: 992px) {
-            .header-content { flex-direction: column; text-align: center; gap: 20px; }
-            .desktop-nav { display: none; }
-            .mobile-toggle { display: block; position: absolute; right: 25px; top: 40px; }
+            .header-wrap { flex-direction: column; text-align: center; gap: 20px; }
+            .zp-logo { display: none; }
+            .nav-bg { display: none; }
+            .mobile-btn { display: block; position: absolute; right: 25px; top: 40px; }
             .service-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .gallery-wrap { grid-template-columns: repeat(2, 1fr); }
+            .leaders-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
-            .hero-slider { height: 450px; }
-            .hero-caption h2 { font-size: 2rem; }
-            .hero-caption p { font-size: 1.1rem; }
+            .hero { height: 450px; }
+            .hero-text h2 { font-size: 2.2rem; }
             
             /* SERVICE ICONS - ONE BY ONE ON MOBILE */
-            .service-grid { grid-template-columns: 1fr; }
-            .service-item { display: flex; align-items: center; text-align: left; padding: 25px; gap: 20px; }
-            .s-icon { margin: 0; width: 65px; height: 65px; min-width: 65px; font-size: 24px; }
-            .service-item h3 { margin-bottom: 5px; font-size: 1.15rem; }
+            .service-grid { grid-template-columns: 1fr; gap: 15px; }
+            .s-card { display: flex; align-items: center; text-align: left; padding: 25px; gap: 20px; }
+            .s-icon-box { margin: 0; width: 65px; height: 65px; min-width: 65px; font-size: 24px; }
+            .s-card h3 { margin-bottom: 5px; font-size: 1.15rem; }
             
-            .stats-grid { grid-template-columns: 1fr; }
-            .stat-card h4 { font-size: 2.5rem; }
+            /* STATS - ONE BY ONE */
+            .stat-row { flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; }
+            .stat-value { align-self: flex-end; }
             
-            .center-title h2 { font-size: 2rem; }
-            .brand-text h1 { font-size: 1.4rem; }
-            .main-logo { height: 70px; }
+            .brand-titles h1 { font-size: 1.5rem; }
+            .main-logo { height: 75px; }
         }
 
     </style>
 </head>
 <body>
 
-    <!-- Overlay Elements -->
-    <div class="overlay-bg" id="overlay"></div>
-    <div class="mobile-menu-overlay" id="mobileMenu">
-        <i class="fas fa-times close-menu" onclick="toggleMenu()"></i>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="overlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <i class="fas fa-times close-btn" onclick="toggleMenu()"></i>
         <div style="text-align: center; margin-bottom: 30px;">
-            <img src="https://anikfin.com/Zare/Gallary/GP.png" style="height: 60px; margin: 0 auto;">
+            <img src="https://anikfin.com/Zare/Gallary/GP.png" style="height: 65px;">
         </div>
-        <ul>
+        <ul class="side-nav-list">
             <li><a href="#" onclick="toggleMenu()">मुख्यपृष्ठ</a></li>
             <li><a href="#services" onclick="toggleMenu()">सेवा व सुविधा</a></li>
             <li><a href="#stats" onclick="toggleMenu()">गाव सांख्यिकी</a></li>
-            <li><a href="#team" onclick="toggleMenu()">आमची टीम</a></li>
+            <li><a href="#team" onclick="toggleMenu()">पदाधिकारी</a></li>
             <li><a href="#gallery" onclick="toggleMenu()">गॅलरी</a></li>
             <li><a href="#contact" onclick="toggleMenu()">संपर्क</a></li>
         </ul>
-        <div style="margin-top: 40px; text-align: center;">
-            <p style="font-size: 12px; color: #888;">&copy; २०२५ ग्रामपंचायत झरे-२</p>
+        <div style="margin-top: 50px; text-align: center; font-size: 0.8rem; color: #94a3b8;">
+            <p>&copy; २०२५ ग्रामपंचायत झरे-२</p>
         </div>
     </div>
 
-    <!-- 1. TOP BAR -->
-    <div class="top-utility">
+    <!-- 1. TOP UTILITY -->
+    <div class="top-nav">
         <div class="container top-flex">
-            <div class="gov-branding">
-                <span><i class="fas fa-landmark"></i> महाराष्ट्र शासन</span>
-                <span class="hide-mobile"><i class="fas fa-map-marker-alt"></i> सिंधुदुर्ग जिल्हा परिषद</span>
+            <div class="top-info">
+                <span><i class="fas fa-landmark"></i> महाराष्ट्र शासन | सिंधुदुर्ग जिल्हा परिषद</span>
+                <span class="hide-mobile"><i class="fas fa-phone"></i> +९१ ८००७७७३८८८</span>
             </div>
-            <div class="utility-links">
-                <a href="#"><i class="fas fa-universal-access"></i></a>
-                <a href="#" style="font-weight: 700;">मराठी</a>
+            <div class="top-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="font-weight: 700; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 15px; margin-left: 15px;">मराठी</a>
             </div>
         </div>
     </div>
 
     <!-- 2. HEADER -->
     <header>
-        <div class="container header-content">
-            <div class="brand-box">
-                <img src="https://anikfin.com/Zare/Gallary/GP.png" alt="Logo" class="main-logo">
-                <div class="brand-text">
-                    <p>डिजिटल ग्रामपंचायत पोर्टल</p>
-                    <h1>ग्रुप ग्रामपंचायत झरे - २</h1>
-                    <small style="color: #64748b; font-weight: 700;">ता. दोडामार्ग, जि. सिंधुदुर्ग</small>
+        <div class="container">
+            <div class="header-wrap">
+                <div class="logo-box">
+                    <img src="https://anikfin.com/Zare/Gallary/GP.png" alt="Logo" class="main-logo">
+                    <div class="brand-titles">
+                        <p>डिजिटल ग्रामपंचायत पोर्टल</p>
+                        <h1>ग्रुप ग्रामपंचायत झरे - २</h1>
+                        <small>ता. दोडामार्ग, जि. सिंधुदुर्ग</small>
+                    </div>
+                </div>
+                <div class="mobile-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="zp-logo">
+                    <img src="https://anikfin.com/Ker/zp.png" alt="ZP Logo">
                 </div>
             </div>
-            <div class="mobile-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div class="zp-logo hide-mobile">
-                <img src="https://anikfin.com/Ker/zp.png" alt="ZP Logo">
-            </div>
-        </div>
-        
-        <div class="container">
-            <nav class="desktop-nav">
+
+            <!-- Desktop Nav -->
+            <nav class="nav-bg">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="#"><i class="fas fa-home"></i></a></li>
                     <li class="nav-item"><a href="#services">सेवा व सुविधा</a></li>
-                    <li class="nav-item"><a href="#stats">सांख्यिकी</a></li>
+                    <li class="nav-item"><a href="#stats">गाव सांख्यिकी</a></li>
                     <li class="nav-item"><a href="#team">पदाधिकारी</a></li>
                     <li class="nav-item"><a href="#gallery">गॅलरी</a></li>
                     <li class="nav-item"><a href="#contact">संपर्क</a></li>
@@ -375,242 +384,375 @@
     </header>
 
     <!-- 3. HERO SLIDER -->
-    <section class="hero-slider">
+    <section class="hero">
         <div class="slide active">
-            <img src="https://anikfin.com/Zare/Gallary/01.jpg" alt="Zhare 1">
-            <div class="hero-caption">
-                <h2 class="animate__animated animate__fadeInDown">प्रगत झरे - २, विकसित झरे - २</h2>
-                <p class="animate__animated animate__fadeInUp">निसर्गरम्य कोकणातील एक आदर्श आणि डिजिटल ग्रामपंचायत</p>
-                <a href="#services" class="btn-main animate__animated animate__zoomIn" style="background: var(--accent); color: white; padding: 15px 40px; border-radius: 50px; font-weight: 800; display: inline-block;">सुरुवात करा</a>
+            <img src="https://anikfin.com/Zare/Gallary/01.jpg" alt="GP Slide">
+            <div class="hero-text">
+                <h2 class="animate__animated animate__fadeInDown">आपले झरे - २, आपले डिजिटल गाव</h2>
+                <p class="animate__animated animate__fadeInUp">ग्रामस्थांच्या सेवेसाठी आणि गावच्या सर्वांगीण विकासासाठी आम्ही सदैव तत्पर आहोत.</p>
+                <a href="#services" class="btn-cta animate__animated animate__zoomIn">अधिक माहिती पहा</a>
             </div>
         </div>
         <div class="slide">
-            <img src="https://anikfin.com/Zare/Gallary/03.jpg" alt="Zhare 2">
-            <div class="hero-caption">
+            <img src="https://anikfin.com/Zare/Gallary/03.jpg" alt="GP Slide">
+            <div class="hero-text">
                 <h2>लोकाभिमुख प्रशासन</h2>
-                <p>सर्व शासकीय योजना घराघरात पोहोचवण्यासाठी आम्ही कटिबद्ध आहोत.</p>
+                <p>शासकीय योजना घराघरात पोहोचवणे हेच आमचे ध्येय.</p>
             </div>
         </div>
         <div class="slide">
-            <img src="https://anikfin.com/Zare/Gallary/05.jpg" alt="Zhare 3">
-            <div class="hero-caption">
+            <img src="https://anikfin.com/Zare/Gallary/08.jpg" alt="GP Slide">
+            <div class="hero-text">
                 <h2>स्वच्छ आणि सुंदर गाव</h2>
-                <p>सहभागी होऊया गावच्या विकासात, राखूया गावचा वारसा.</p>
+                <p>सहभागी होऊया गावच्या विकासात, राखूया गावचा नैसर्गिक वारसा.</p>
             </div>
         </div>
     </section>
 
     <!-- 4. NEWS TICKER -->
-    <div class="ticker-bar">
-        <div class="container ticker-flex">
-            <div class="ticker-title">महत्त्वाच्या बातम्या</div>
-            <marquee onmouseover="this.stop()" onmouseout="this.start()" font-weight="700">
-                🔔 ग्रामपंचायत झरे - २: घरपट्टी आणि पाणीपट्टी ३१ मार्च पूर्वी भरून ५% सवलत मिळवा... ♻️ प्लास्टिक मुक्त गाव अभियानात सहभागी व्हा... 🏠 घरकुल योजनेच्या नवीन यादीसाठी ग्रामपंचायत कार्यालयात संपर्क साधा... 🚜 शेतकरी योजनांसाठी नोंदणी सुरू आहे...
+    <div class="news-ticker">
+        <div class="container ticker-wrap">
+            <div class="ticker-head"><i class="fas fa-bullhorn"></i> महत्त्वाच्या सूचना</div>
+            <marquee onmouseover="this.stop()" onmouseout="this.start()">
+                📢 ग्रामपंचायत झरे - २: घरपट्टी आणि पाणीपट्टी ३१ मार्च पूर्वी भरून सहकार्य करा... ♻️ गाव प्लास्टिक मुक्त करूया... 🏘️ घरकुल योजनेच्या नवीन अर्जांसाठी संपर्क साधा... 🚜 शेतकरी मेळाव्याचे आयोजन लवकरच...
             </marquee>
         </div>
     </div>
 
     <!-- 5. SERVICES GRID (12 ICONS) -->
-    <section class="section-padding" id="services" style="background: #fff;">
-        <div class="container">
-            <div class="center-title" data-aos="fade-up">
-                <span>डिजिटल सुविधा</span>
-                <h2>नागरिकांसाठी सेवा</h2>
-                <div class="title-line"></div>
-            </div>
+    <section class="container" id="services" style="padding: 100px 0;">
+        <div class="section-header" data-aos="fade-up">
+            <span>आमच्या सुविधा</span>
+            <h2>डिजिटल नागरिक सेवा</h2>
+        </div>
 
-            <div class="service-grid">
-                <!-- 1 -->
-                <div class="service-item" data-aos="fade-up">
-                    <div class="s-icon"><i class="fas fa-users-cog"></i></div>
-                    <h3>पदाधिकारी</h3>
-                    <p>सरपंच, उपसरपंच व सदस्यांची माहिती पहा.</p>
+        <div class="service-grid">
+            <!-- 1 -->
+            <div class="s-card" data-aos="fade-up">
+                <div class="s-icon-box"><i class="fas fa-users"></i></div>
+                <h3>पदाधिकारी</h3>
+                <p>सरपंच व सदस्य मंडळाची माहिती</p>
+            </div>
+            <!-- 2 -->
+            <div class="s-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="s-icon-box"><i class="fas fa-file-contract"></i></div>
+                <h3>दाखले</h3>
+                <p>जन्म, मृत्यू व रहिवासी दाखले</p>
+            </div>
+            <!-- 3 -->
+            <div class="s-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="s-icon-box"><i class="fas fa-tint"></i></div>
+                <h3>पाणी पुरवठा</h3>
+                <p>योजना व तक्रार निवारण</p>
+            </div>
+            <!-- 4 -->
+            <div class="s-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="s-icon-box"><i class="fas fa-landmark"></i></div>
+                <h3>घरपट्टी / कर</h3>
+                <p>कराची माहिती व भरणा तपशील</p>
+            </div>
+            <!-- 5 -->
+            <div class="s-card" data-aos="fade-up">
+                <div class="s-icon-box"><i class="fas fa-bullhorn"></i></div>
+                <h3>ग्रामसभा</h3>
+                <p>इतिवृत्त आणि नोटीस बोर्ड</p>
+            </div>
+            <!-- 6 -->
+            <div class="s-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="s-icon-box"><i class="fas fa-camera-retro"></i></div>
+                <h3>गॅलरी</h3>
+                <p>विकास कामांचे छायाचित्रे</p>
+            </div>
+            <!-- 7 -->
+            <div class="s-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="s-icon-box"><i class="fas fa-download"></i></div>
+                <h3>डाउनलोड</h3>
+                <p>शासकीय अर्जांचे नमुने</p>
+            </div>
+            <!-- 8 -->
+            <div class="s-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="s-icon-box"><i class="fas fa-hand-holding-heart"></i></div>
+                <h3>योजना</h3>
+                <p>शासकीय लोककल्याणकारी योजना</p>
+            </div>
+            <!-- 9 -->
+            <div class="s-card" data-aos="fade-up">
+                <div class="s-icon-box"><i class="fas fa-graduation-cap"></i></div>
+                <h3>शिक्षण</h3>
+                <p>शाळा व अंगणवाडी माहिती</p>
+            </div>
+            <!-- 10 -->
+            <div class="s-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="s-icon-box"><i class="fas fa-heartbeat"></i></div>
+                <h3>आरोग्य</h3>
+                <p>उपकेंद्र व लसीकरण अपडेट्स</p>
+            </div>
+            <!-- 11 -->
+            <div class="s-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="s-icon-box"><i class="fas fa-tractor"></i></div>
+                <h3>कृषी</h3>
+                <p>शेतकऱ्यांसाठी अवजारे व खते</p>
+            </div>
+            <!-- 12 -->
+            <div class="s-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="s-icon-box"><i class="fas fa-phone-alt"></i></div>
+                <h3>संपर्क</h3>
+                <p>महत्त्वाचे फोन नंबर व पत्ता</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. STATE LEADERS -->
+    <section class="container" style="padding-bottom: 80px;">
+        <div class="section-header" data-aos="fade-up">
+            <span>प्रगत नेतृत्व</span>
+            <h2>महाराष्ट्र राज्य नेतृत्व</h2>
+        </div>
+        <div class="leaders-grid">
+            <div class="leader-card" data-aos="fade-up">
+                <div class="leader-img"><img src="https://anikfin.com/Ker/cm.png" alt="CM"></div>
+                <div class="leader-body">
+                    <span class="leader-role">माननीय मुख्यमंत्री</span>
+                    <h3 class="leader-name">श्री. देवेंद्र फडणवीस</h3>
                 </div>
-                <!-- 2 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="50">
-                    <div class="s-icon"><i class="fas fa-certificate"></i></div>
-                    <h3>दाखले</h3>
-                    <p>जन्म, मृत्यू व रहिवासी दाखल्यांचे अर्ज.</p>
+            </div>
+            <div class="leader-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="leader-img"><img src="https://anikfin.com/Ker/shinde.png" alt="DCM"></div>
+                <div class="leader-body">
+                    <span class="leader-role">माननीय उपमुख्यमंत्री</span>
+                    <h3 class="leader-name">श्री. एकनाथ शिंदे</h3>
                 </div>
-                <!-- 3 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="s-icon"><i class="fas fa-tint"></i></div>
-                    <h3>पाणी पुरवठा</h3>
-                    <p>नळ जोडणी व पाणीपट्टी संबंधित तक्रारी.</p>
-                </div>
-                <!-- 4 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="150">
-                    <div class="s-icon"><i class="fas fa-home"></i></div>
-                    <h3>घरपट्टी / कर</h3>
-                    <p>कराची माहिती व ऑनलाईन भरणा तपशील.</p>
-                </div>
-                <!-- 5 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="s-icon"><i class="fas fa-bullhorn"></i></div>
-                    <h3>ग्रामसभा</h3>
-                    <p>ग्रामसभेचे इतिवृत्त आणि पुढील सूचना.</p>
-                </div>
-                <!-- 6 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="250">
-                    <div class="s-icon"><i class="fas fa-images"></i></div>
-                    <h3>गॅलरी</h3>
-                    <p>गावच्या विकासाची आणि कार्यक्रमांची छायाचित्रे.</p>
-                </div>
-                <!-- 7 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="s-icon"><i class="fas fa-download"></i></div>
-                    <h3>डाउनलोड</h3>
-                    <p>विविध योजनांचे शासकीय अर्ज डाऊनलोड करा.</p>
-                </div>
-                <!-- 8 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="350">
-                    <div class="s-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                    <h3>योजना</h3>
-                    <p>केंद्र व राज्य शासनाच्या महत्त्वाच्या योजना.</p>
-                </div>
-                <!-- 9 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="s-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>शिक्षण</h3>
-                    <p>शाळा व अंगणवाडी संबंधित माहिती.</p>
-                </div>
-                <!-- 10 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="450">
-                    <div class="s-icon"><i class="fas fa-heartbeat"></i></div>
-                    <h3>आरोग्य</h3>
-                    <p>आरोग्य उपकेंद्र व लसीकरण मोहीम.</p>
-                </div>
-                <!-- 11 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="500">
-                    <div class="s-icon"><i class="fas fa-tractor"></i></div>
-                    <h3>कृषी</h3>
-                    <p>शेतकऱ्यांसाठी अवजारे व खत माहिती.</p>
-                </div>
-                <!-- 12 -->
-                <div class="service-item" data-aos="fade-up" data-aos-delay="550">
-                    <div class="s-icon"><i class="fas fa-phone-alt"></i></div>
-                    <h3>संपर्क</h3>
-                    <p>आपत्कालीन संपर्क व ग्रामपंचायत पत्ता.</p>
+            </div>
+            <div class="leader-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="leader-img"><img src="https://www.loksatta.com/wp-content/uploads/2023/07/Ajit-Pawar-4.jpg" alt="DCM"></div>
+                <div class="leader-body">
+                    <span class="leader-role">माननीय उपमुख्यमंत्री</span>
+                    <h3 class="leader-name">श्री. अजित पवार</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. STATISTICS -->
-    <section class="stats-banner" id="stats">
+    <!-- 7. VILLAGE STATS (COMPLETE DATA) -->
+    <section class="stats-section" id="stats">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card" data-aos="zoom-in">
-                    <i class="fas fa-users"></i>
-                    <h4>851</h4>
-                    <p>एकूण लोकसंख्या</p>
+            <div class="section-header" data-aos="fade-up">
+                <span style="color: var(--accent);">झरे - २ सांख्यिकी</span>
+                <h2 style="color: white;">गावचे संपूर्ण तपशील</h2>
+            </div>
+            
+            <div class="stats-table-box" data-aos="fade-up">
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-users"></i> एकूण लोकसंख्या</div>
+                    <div class="stat-value">851</div>
                 </div>
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fas fa-id-card"></i>
-                    <h4>816</h4>
-                    <p>मतदार संख्या</p>
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-female"></i> स्त्री लोकसंख्या</div>
+                    <div class="stat-value">418</div>
                 </div>
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-school"></i>
-                    <h4>2</h4>
-                    <p>अंगणवाडी</p>
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-male"></i> पुरुष लोकसंख्या</div>
+                    <div class="stat-value">433</div>
                 </div>
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fas fa-tint"></i>
-                    <h4>5</h4>
-                    <p>सार्वजनिक विहिरी</p>
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-id-card"></i> मतदार संख्या</div>
+                    <div class="stat-value">816</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-tint"></i> एकूण विहिरी</div>
+                    <div class="stat-value">5</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-school"></i> जिल्हा परिषद शाळा</div>
+                    <div class="stat-value">1</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-university"></i> माध्यमिक शाळा</div>
+                    <div class="stat-value">1</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-baby"></i> अंगणवाडी</div>
+                    <div class="stat-value">2</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-faucet"></i> नळयोजना</div>
+                    <div class="stat-value">2</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label"><i class="fas fa-hospital"></i> आरोग्य उपकेंद्र</div>
+                    <div class="stat-value">1</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. TEAM SECTION -->
-    <section class="section-padding" id="team">
-        <div class="container">
-            <div class="center-title" data-aos="fade-up">
-                <span>आमचे नेतृत्व</span>
-                <h2>पदाधिकारी व कर्मचारी</h2>
-                <div class="title-line"></div>
-            </div>
+    <!-- 8. LOCAL TEAM (ALL 11 STAFF) -->
+    <section class="container" id="team" style="padding: 100px 0;">
+        <div class="section-header" data-aos="fade-up">
+            <span>कार्यक्षम टीम</span>
+            <h2>ग्रामपंचायत पदाधिकारी व कर्मचारी</h2>
+        </div>
 
-            <div class="team-grid">
-                <!-- Sarpanch -->
-                <div class="member-box" data-aos="fade-up">
-                    <div class="m-img"><img src="https://www.anikfin.com/Zare/Shruti.jpg" alt="Shruti"></div>
-                    <div class="m-info">
-                        <h4>सौ. श्रुती विठ्ठल देसाई</h4>
-                        <span>सरपंच</span>
-                    </div>
+        <div class="team-grid">
+            <!-- 1 -->
+            <div class="member-card" data-aos="fade-up">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Shruti.jpg" alt="Shruti"></div>
+                <div class="m-info">
+                    <h4>सौ. श्रुती विठ्ठल देसाई</h4>
+                    <span>सरपंच</span>
                 </div>
-                <!-- Deputy -->
-                <div class="member-box" data-aos="fade-up" data-aos-delay="100">
-                    <div class="m-img"><img src="https://www.anikfin.com/Zare/Arjun.jpg" alt="Arjun"></div>
-                    <div class="m-info">
-                        <h4>श्री. अर्जून कृष्णा आयनोडकर</h4>
-                        <span>उपसरपंच</span>
-                    </div>
+            </div>
+            <!-- 2 -->
+            <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Arjun.jpg" alt="Arjun"></div>
+                <div class="m-info">
+                    <h4>श्री. अर्जून कृष्णा आयनोडकर</h4>
+                    <span>उपसरपंच</span>
                 </div>
-                <!-- Secretary -->
-                <div class="member-box" data-aos="fade-up" data-aos-delay="200">
-                    <div class="m-img"><img src="https://www.anikfin.com/Zare/Janardhan.jpg" alt="Janardhan"></div>
-                    <div class="m-info">
-                        <h4>श्री. जनार्दन बाबाजी खानोलकर</h4>
-                        <span>ग्रामविकास अधिकारी</span>
-                    </div>
+            </div>
+            <!-- 3 -->
+            <div class="member-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Approva.jpg" alt="Approva"></div>
+                <div class="m-info">
+                    <h4>सौ. अपूर्वा अभय ठाकूर</h4>
+                    <span>सदस्य</span>
                 </div>
-                <!-- Operator -->
-                <div class="member-box" data-aos="fade-up" data-aos-delay="300">
-                    <div class="m-img"><img src="https://www.anikfin.com/Zare/Manjusha.jpg" alt="Manjusha"></div>
-                    <div class="m-info">
-                        <h4>मंजुषा मोहन घोगळे</h4>
-                        <span>डेटा ऑपरेटर</span>
-                    </div>
+            </div>
+            <!-- 4 -->
+            <div class="member-card" data-aos="fade-up">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Purva.jpg" alt="Purva"></div>
+                <div class="m-info">
+                    <h4>सौ. पूर्वा विठ्ठल गवस</h4>
+                    <span>सदस्य</span>
+                </div>
+            </div>
+            <!-- 5 -->
+            <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Yogita.jpg" alt="Yogita"></div>
+                <div class="m-info">
+                    <h4>सौ. योगिता योगेश शेटवे</h4>
+                    <span>सदस्य</span>
+                </div>
+            </div>
+            <!-- 6 -->
+            <div class="member-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Janardhan.jpg" alt="Janardhan"></div>
+                <div class="m-info">
+                    <h4>श्री. जनार्दन बाबाजी खानोलकर</h4>
+                    <span>ग्रामविकास अधिकारी</span>
+                </div>
+            </div>
+            <!-- 7 -->
+            <div class="member-card" data-aos="fade-up">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Manjusha.jpg" alt="Manjusha"></div>
+                <div class="m-info">
+                    <h4>मंजुषा मोहन घोगळे</h4>
+                    <span>डेटा ऑपरेटर</span>
+                </div>
+            </div>
+            <!-- 8 -->
+            <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Akshita.jpg" alt="Akshita"></div>
+                <div class="m-info">
+                    <h4>अक्षता अमरनाथ सावंत</h4>
+                    <span>हंगामी क्लर्क</span>
+                </div>
+            </div>
+            <!-- 9 -->
+            <div class="member-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Arpita.jpg" alt="Arpita"></div>
+                <div class="m-info">
+                    <h4>अर्पिता आनंद सावंत</h4>
+                    <span>रोजगार सेवक</span>
+                </div>
+            </div>
+            <!-- 10 -->
+            <div class="member-card" data-aos="fade-up">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Deepak.jpg" alt="Deepak"></div>
+                <div class="m-info">
+                    <h4>श्री. दिपक रामचंद राणे</h4>
+                    <span>शिपाई</span>
+                </div>
+            </div>
+            <!-- 11 -->
+            <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="m-image"><img src="https://www.anikfin.com/Zare/Ulhas.jpg" alt="Ulhas"></div>
+                <div class="m-info">
+                    <h4>श्री. उल्हास सावंत</h4>
+                    <span>कर्मचारी</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 8. GALLERY -->
-    <section class="section-padding" id="gallery" style="background: #fff;">
+    <!-- 9. GALLERY GRID -->
+    <section class="container" id="gallery" style="padding-bottom: 100px;">
+        <div class="section-header" data-aos="fade-up">
+            <span>फोटो गॅलरी</span>
+            <h2>गावची क्षणचित्रे</h2>
+        </div>
+        <div class="gallery-grid" id="mainGallery">
+            <!-- Generated by JS -->
+        </div>
+    </section>
+
+    <!-- 10. GOVT LOGOS BAR -->
+    <section class="gov-logos">
         <div class="container">
-            <div class="center-title">
-                <span>छायाचित्रे</span>
-                <h2>गावची गॅलरी</h2>
-                <div class="title-line"></div>
-            </div>
-            <div class="gallery-wrap" id="galleryGrid">
-                <!-- Generated by JS -->
+            <div class="logo-flex">
+                <div class="gov-item">
+                    <img src="https://www.india.gov.in/sites/upload_files/npi/files/logo_1.png" alt="India Govt">
+                    <p>भारत सरकार</p>
+                </div>
+                <div class="gov-item">
+                    <img src="https://maharashtra.gov.in/Sitemap/maharashtra/pdf/GOM_Logo.png" alt="Maha Govt">
+                    <p>महाराष्ट्र शासन</p>
+                </div>
+                <div class="gov-item">
+                    <img src="https://aaplesarkar.mahaonline.gov.in/Images/Aaple_Sarkar_logo.png" alt="Aaple Sarkar">
+                    <p>आपले सरकार</p>
+                </div>
+                <div class="gov-item">
+                    <img src="https://swachhbharatmission.gov.in/sbm-cms/writereaddata/Portal/Images/SBM_Logo.png" alt="SBM">
+                    <p>स्वच्छ भारत</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 9. FOOTER -->
+    <!-- 11. FOOTER -->
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
-                <div class="f-col f-about">
+                <div class="f-col">
                     <h3>ग्रामपंचायत झरे - २</h3>
-                    <p>ग्रामपंचायत झरे - २ ही दोडामार्ग तालुक्यातील एक प्रगत ग्रामपंचायत आहे. आम्ही तंत्रज्ञानाचा वापर करून पारदर्शक आणि गतिमान प्रशासन देण्यासाठी सदैव तत्पर आहोत. आपल्या सर्वांच्या सहभागातून झरे - २ चा कायापालट करूया.</p>
+                    <p>आमचा गाव, आमचा विकास. आम्ही तंत्रज्ञानाचा वापर करून पारदर्शक आणि गतिमान प्रशासन देण्यासाठी सदैव तत्पर आहोत. निसर्गरम्य कोकणातील एक आदर्श ग्रामपंचायत.</p>
+                    <div style="margin-top: 25px; font-size: 1.5rem;">
+                        <a href="#" style="margin-right: 20px;"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 <div class="f-col">
-                    <h3>दुवे</h3>
+                    <h3>उपयुक्त दुवे</h3>
                     <ul class="f-links">
-                        <li><a href="#">आपले सरकार पोर्टल</a></li>
-                        <li><a href="#">सिंधुदुर्ग जिल्हा परिषद</a></li>
-                        <li><a href="#">महाभूलेख (७/१२)</a></li>
-                        <li><a href="#">मतदार यादी</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> ७/१२ उतारा</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> मतदार यादी</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> घरपट्टी माहिती</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> आपले सरकार</a></li>
                     </ul>
                 </div>
-                <div class="f-col f-contact">
-                    <h3>संपर्क</h3>
-                    <p><i class="fas fa-map-marked-alt"></i> मु. पो. झरे - २, ता. दोडामार्ग, जि. सिंधुदुर्ग, महाराष्ट्र - ४१६५१२</p>
-                    <p><i class="fas fa-phone-volume"></i> +९१ ८००७७७३८८८ (उमेश)</p>
-                    <p><i class="fas fa-envelope-open-text"></i> contact@zare2gp.gov.in</p>
+                <div class="f-col">
+                    <h3>संपर्क माहिती</h3>
+                    <div class="f-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> मु. पो. झरे - २, ता. दोडामार्ग, <br>जि. सिंधुदुर्ग, महाराष्ट्र - ४१६५१२</p>
+                        <p><i class="fas fa-phone-alt"></i> +९१ ८००७७७३८८८</p>
+                        <p><i class="fas fa-envelope"></i> contact@zare2gp.gov.in</p>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="copyright">
                 <p>&copy; २०२५ ग्रुप ग्रामपंचायत झरे-२. सर्व हक्क राखीव. <br>
-                डिजाइन आणि डेव्हलपमेंट: <b>Umesh (8007773888)</b></p>
+                डिझाइन व मेंटेनन्स: <b>Umesh (8007773888)</b></p>
             </div>
         </div>
     </footer>
@@ -618,11 +760,12 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS
         AOS.init({ duration: 1000, once: true });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Logic
         function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('active');
+            document.getElementById('sideMenu').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
 
@@ -636,14 +779,14 @@
         }
         setInterval(rotateSlides, 5000);
 
-        // Gallery Generator
-        const galleryGrid = document.getElementById('galleryGrid');
-        for(let i=1; i<=8; i++) {
-            let n = i < 10 ? '0' + i : i;
-            galleryGrid.innerHTML += `
+        // Dynamic Gallery Loader (10 Images)
+        const galleryBox = document.getElementById('mainGallery');
+        for(let i=1; i<=10; i++) {
+            let n = i < 10 ? '0'+i : i;
+            galleryBox.innerHTML += `
                 <div class="gallery-item" data-aos="zoom-in">
                     <img src="https://anikfin.com/Zare/Gallary/${n}.jpg" alt="Gallery ${i}">
-                    <div class="gallery-info">ग्रामपंचायत झरे - २ विकास कामे ${i}</div>
+                    <div class="gallery-overlay">ग्रामपंचायत झरे - २ विकास कामे ${i}</div>
                 </div>
             `;
         }
