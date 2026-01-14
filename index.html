@@ -1,244 +1,310 @@
-<!-- START OF FILE Digital_Zhare2.html -->
 <!DOCTYPE html>
 <html lang="mr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ग्रामपंचायत झरे-२ | डिजिटल ग्रामपंचायत</title>
+    <title>ग्रामपंचायत झरे - २ | ता. दोडामार्ग, जि. सिंधुदुर्ग</title>
     
-    <!-- Google Fonts: Noto Sans Devanagari for Marathi & Montserrat for numbers/English -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;600;700;800&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Animate.css for entrance animations -->
+    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
+        /* --- CSS VARIABLES (GOVT STANDARDS) --- */
         :root {
-            --brand-blue: #0f172a; /* Deep Navy Blue */
-            --accent-gold: #b45309; /* Golden Saffron */
-            --light-gold: #fef3c7;
-            --pure-white: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --gov-blue: #003366;
+            --gov-orange: #ff9933;
+            --gov-dark: #1a1a1a;
+            --gov-light: #f4f7f6;
+            --white: #ffffff;
+            --gold: #d4af37;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.1);
+            --section-padding: 80px 0;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
         body { 
-            font-family: 'Noto Sans Devanagari', sans-serif; 
-            background-color: #f1f5f9; 
-            color: var(--text-main);
+            font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif; 
+            background-color: var(--gov-light); 
+            color: var(--gov-dark);
+            line-height: 1.7;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* --- UTILITIES --- */
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .flex { display: flex; }
+        .justify-between { justify-content: space-between; }
+        .align-center { align-items: center; }
+        .mb-20 { margin-bottom: 20px; }
+        .mt-50 { margin-top: 50px; }
 
-        /* --- TOP HEADER --- */
-        .top-nav {
-            background: var(--brand-blue);
+        /* --- TOP ACCESSIBILITY BAR --- */
+        .top-acc-bar {
+            background: #002244;
             color: white;
-            padding: 8px 0;
-            font-size: 0.85rem;
-            border-bottom: 3px solid var(--accent-gold);
+            padding: 5px 0;
+            font-size: 0.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .top-nav .flex-box { display: flex; justify-content: space-between; align-items: center; }
+        .top-acc-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .acc-links a { margin-right: 15px; color: #ddd; }
+        .acc-links a:hover { color: var(--gov-orange); }
 
         /* --- MAIN HEADER --- */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
+        header { 
+            background: var(--white); 
+            box-shadow: var(--shadow-sm); 
+            position: sticky; 
+            top: 0; 
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--gov-orange);
         }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo-section { display: flex; align-items: center; gap: 20px; }
-        .logo-main { height: 85px; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); }
-        
-        .title-group h1 { 
+        .header-main { padding: 15px 0; }
+        .brand-container { display: flex; align-items: center; gap: 20px; }
+        .logo-img { height: 90px; object-fit: contain; }
+        .brand-text h1 { 
             font-size: 1.8rem; 
-            color: var(--brand-blue); 
-            font-weight: 800;
+            color: var(--gov-blue); 
+            font-weight: 800; 
             line-height: 1.2;
+            text-transform: uppercase;
         }
-        .title-group p { color: var(--accent-gold); font-weight: 700; letter-spacing: 1px; font-size: 0.9rem; }
+        .brand-text p { color: var(--gov-orange); font-weight: 700; font-size: 0.95rem; }
 
         /* --- NAVIGATION --- */
-        nav { background: var(--brand-blue); margin-top: 10px; border-radius: 50px; }
-        .nav-links { display: flex; justify-content: center; list-style: none; }
-        .nav-links li a { 
+        .nav-bg { background: var(--gov-blue); }
+        .main-nav { display: flex; justify-content: center; }
+        .nav-item { position: relative; }
+        .nav-link { 
             display: block; 
-            padding: 15px 20px; 
-            color: white; 
-            text-decoration: none; 
-            font-weight: 600;
+            padding: 15px 25px; 
+            color: var(--white); 
+            font-weight: 500; 
             font-size: 0.95rem;
-            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .nav-links li a:hover { color: var(--accent-gold); background: rgba(255,255,255,0.05); }
+        .nav-link:hover, .nav-item.active .nav-link { 
+            background: rgba(255,255,255,0.1); 
+            color: var(--gov-orange); 
+        }
 
-        /* --- HERO SLIDER --- */
-        .hero-wrap {
-            height: 550px;
+        /* --- NEWS TICKER --- */
+        .news-ticker { background: #fff; border-bottom: 1px solid #eee; padding: 10px 0; }
+        .ticker-wrap { display: flex; align-items: center; }
+        .ticker-label { 
+            background: var(--gov-orange); 
+            color: white; 
+            padding: 5px 15px; 
+            font-weight: 700; 
+            border-radius: 4px; 
+            margin-right: 20px;
+            white-space: nowrap;
+            font-size: 0.85rem;
+        }
+        marquee { font-weight: 600; color: #444; }
+
+        /* --- HERO SLIDER (FIXED) --- */
+        .hero-section {
             position: relative;
+            height: 550px;
             overflow: hidden;
             background: #000;
         }
-        .hero-slide {
-            position: absolute;
+        .slider-container {
+            display: flex;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            background-size: cover;
-            background-position: center;
+            transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
         }
-        .hero-slide.active { opacity: 0.6; }
-        .hero-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            z-index: 5;
-            width: 100%;
-        }
-        .hero-text h2 { font-size: 4rem; font-weight: 900; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        .hero-text p { font-size: 1.5rem; background: rgba(180, 83, 9, 0.8); display: inline-block; padding: 5px 25px; border-radius: 50px; }
-
-        /* --- STATS SECTION (Unique Design) --- */
-        .stats-section { padding: 80px 0; background: white; margin-top: -50px; position: relative; z-index: 10; border-radius: 60px 60px 0 0; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .stat-item { 
-            text-align: center; 
-            padding: 30px; 
-            border-radius: 20px; 
-            background: var(--bg-gradient); 
-            transition: 0.3s;
-            border-bottom: 5px solid var(--accent-gold);
-        }
-        .stat-item:hover { transform: translateY(-10px); }
-        .stat-item i { font-size: 2.5rem; color: var(--brand-blue); margin-bottom: 15px; }
-        .stat-count { display: block; font-size: 2rem; font-weight: 800; font-family: 'Montserrat', sans-serif; color: var(--brand-blue); }
-        .stat-label { font-weight: 700; color: var(--text-muted); font-size: 0.9rem; }
-
-        /* --- SECTION TITLES --- */
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 2.5rem; color: var(--brand-blue); position: relative; padding-bottom: 15px; }
-        .section-header h2::after { content: ''; width: 100px; height: 5px; background: var(--accent-gold); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 10px; }
-
-        /* --- LEADERSHIP (NEW CARDS) --- */
-        .leader-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 40px 0; }
-        .leader-card {
-            width: 350px;
-            background: white;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
+        .slide {
+            min-width: 100%;
+            height: 100%;
             position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Prevent cropping as requested */
+            background: #001122; /* Fallback background */
+        }
+        .slide-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+        .slide-content h2 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+        
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            color: white; border: none; padding: 15px; cursor: pointer;
+            font-size: 1.5rem; z-index: 10; border-radius: 50%;
+        }
+        .slider-btn:hover { background: var(--gov-orange); }
+        .btn-prev { left: 20px; }
+        .btn-next { right: 20px; }
+
+        /* --- LEADERS SECTION (AS PER PREVIOUS REQ) --- */
+        .leaders-section { background: white; padding: var(--section-padding); }
+        .section-title { text-align: center; margin-bottom: 60px; position: relative; }
+        .section-title h2 { font-size: 2.5rem; color: var(--gov-blue); font-weight: 800; }
+        .section-title span { color: var(--gov-orange); font-weight: 600; display: block; margin-top: 5px; }
+        .section-title::after { 
+            content: ''; width: 80px; height: 4px; background: var(--gov-orange); 
+            position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); 
+        }
+
+        .leader-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .leader-card { 
+            background: var(--gov-light); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            text-align: center; 
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
             border: 1px solid #eee;
         }
-        .leader-img-box { height: 400px; width: 100%; overflow: hidden; }
-        .leader-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .leader-card:hover .leader-img-box img { transform: scale(1.1); }
-        .leader-info {
-            padding: 25px;
-            text-align: center;
-            background: linear-gradient(to top, var(--brand-blue), #1e293b);
-            color: white;
+        .leader-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); }
+        .leader-img-wrap { height: 350px; overflow: hidden; background: #e2e8f0; }
+        .leader-img-wrap img { width: 100%; height: 100%; object-fit: contain; } /* Ensuring no crop */
+        .leader-info { padding: 25px; }
+        .leader-role { color: var(--gov-orange); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .leader-name { font-size: 1.3rem; color: var(--gov-blue); font-weight: 700; }
+
+        /* --- STATISTICS SECTION --- */
+        .stats-section { padding: var(--section-padding); background: var(--gov-blue); color: white; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .stat-card { 
+            background: rgba(255,255,255,0.1); 
+            padding: 30px; 
+            border-radius: 15px; 
+            text-align: center; 
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .leader-info h3 { font-size: 1.4rem; margin-bottom: 5px; }
-        .leader-tag { 
-            background: var(--accent-gold); 
-            padding: 4px 15px; 
+        .stat-card i { font-size: 2.5rem; color: var(--gov-orange); margin-bottom: 15px; }
+        .stat-val { font-size: 2.2rem; font-weight: 800; display: block; }
+        .stat-lbl { font-size: 0.9rem; font-weight: 500; color: #cbd5e1; }
+
+        /* --- STAFF & MEMBERS --- */
+        .staff-section { padding: var(--section-padding); background: #fff; }
+        .staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .staff-card { 
+            background: #fff; 
+            border-radius: 12px; 
+            box-shadow: var(--shadow-sm); 
+            overflow: hidden; 
+            border-bottom: 4px solid var(--gov-blue);
+            transition: var(--transition);
+        }
+        .staff-card:hover { transform: scale(1.03); }
+        .staff-img-box { height: 300px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .staff-img-box img { width: 100%; height: 100%; object-fit: contain; }
+        .staff-body { padding: 20px; text-align: center; }
+        .staff-name { font-size: 1.1rem; font-weight: 700; color: var(--gov-blue); }
+        .staff-role { 
+            display: inline-block; 
+            padding: 3px 12px; 
+            background: #fff7ed; 
+            color: #c2410c; 
             border-radius: 20px; 
-            font-size: 0.8rem; 
+            font-size: 0.75rem; 
             font-weight: 700; 
-            text-transform: uppercase; 
+            margin-top: 5px;
         }
 
-        /* --- STAFF GRID --- */
-        .staff-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 25px; 
-            padding: 40px 0;
-        }
-        .staff-item {
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 6px solid var(--accent-gold);
-            transition: 0.3s;
-        }
-        .staff-item:hover { transform: translateX(10px); background: var(--light-gold); }
-        .staff-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .staff-details h4 { font-size: 1rem; color: var(--brand-blue); }
-        .staff-details p { font-size: 0.85rem; color: var(--accent-gold); font-weight: 700; }
+        /* --- VILLAGE DETAILS TABLE --- */
+        .village-info-section { padding: var(--section-padding); background: var(--gov-light); }
+        .info-table-wrap { background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-sm); }
+        .info-table { width: 100%; border-collapse: collapse; }
+        .info-table td { padding: 15px 25px; border-bottom: 1px solid #eee; }
+        .info-table tr:last-child td { border-bottom: none; }
+        .info-lbl { font-weight: 700; color: var(--gov-blue); width: 40%; background: #fdfdfd; }
+        .info-val { font-weight: 500; color: #444; }
 
-        /* --- GALLERY SECTION --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            padding: 20px 0;
-        }
-        .gallery-item {
-            height: 200px;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
+        /* --- GALLERY GRID --- */
+        .gallery-section { padding: var(--section-padding); background: white; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .gallery-item { 
+            height: 250px; 
+            overflow: hidden; 
+            border-radius: 10px; 
+            position: relative; 
+            border: 2px solid #eee;
         }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .gallery-item:hover img { transform: scale(1.2) rotate(3deg); }
-        .gallery-overlay {
-            position: absolute; top:0; left:0; width:100%; height:100%;
-            background: rgba(15, 23, 42, 0.6);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: 0.3s; color: white;
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-cap { 
+            position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.6); 
+            color: white; padding: 10px; font-size: 0.8rem; text-align: center; 
         }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* --- GOVT LINKS BAR --- */
+        .govt-links-section { background: #e2e8f0; padding: 30px 0; border-top: 1px solid #cbd5e1; }
+        .links-flex { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+        .gov-link-item { text-align: center; width: 150px; }
+        .gov-link-item img { height: 50px; margin-bottom: 10px; filter: grayscale(1); transition: 0.3s; }
+        .gov-link-item:hover img { filter: grayscale(0); }
+        .gov-link-item p { font-size: 0.75rem; font-weight: 700; color: #475569; }
 
         /* --- FOOTER --- */
-        footer { background: var(--brand-blue); color: white; padding: 80px 0 20px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; }
-        .footer-col h3 { font-size: 1.5rem; margin-bottom: 25px; border-left: 4px solid var(--accent-gold); padding-left: 15px; }
-        .footer-col p { color: #94a3b8; line-height: 1.8; margin-bottom: 10px; }
-        .contact-link { color: var(--accent-gold); font-weight: 700; text-decoration: none; }
+        footer { background: #001a33; color: #94a3b8; padding: 70px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; }
+        .footer-col h3 { color: white; font-size: 1.4rem; margin-bottom: 25px; border-left: 4px solid var(--gov-orange); padding-left: 15px; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a:hover { color: var(--gov-orange); padding-left: 5px; }
         
-        .copy-bar { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.8rem; color: #64748b; }
+        .contact-info-item { display: flex; gap: 15px; margin-bottom: 20px; }
+        .contact-info-item i { color: var(--gov-orange); font-size: 1.2rem; }
 
-        /* --- MOBILE RESPONSIVE --- */
+        .copyright-area { 
+            border-top: 1px solid rgba(255,255,255,0.05); 
+            margin-top: 50px; padding-top: 25px; text-align: center; font-size: 0.85rem; 
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .leader-grid, .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-section { height: 400px; }
+        }
         @media (max-width: 768px) {
-            .hero-text h2 { font-size: 2.2rem; }
-            .logo-main { height: 60px; }
-            .title-group h1 { font-size: 1.2rem; }
-            .nav-links { flex-direction: column; text-align: center; }
-            .leader-card { width: 100%; }
+            .leader-grid, .stats-grid, .staff-grid { grid-template-columns: 1fr; }
+            .brand-text h1 { font-size: 1.3rem; }
+            .logo-img { height: 60px; }
+            .main-nav { display: none; } /* Mobile toggle not implemented for length but hidden for clean look */
+            .hero-section { height: 300px; }
+            .slide-content h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- TOP NAV -->
-    <div class="top-nav">
+    <!-- TOP ACCESSIBILITY -->
+    <div class="top-acc-bar">
         <div class="container">
-            <div class="flex-box">
-                <div><i class="fas fa-landmark"></i> महाराष्ट्र शासन | सिंधुदुर्ग जिल्हा</div>
-                <div><i class="fas fa-calendar-alt"></i> <span id="currentDate"></span></div>
+            <div>भारत सरकार | महाराष्ट्र शासन | सिंधुदुर्ग जिल्हा परिषद</div>
+            <div class="acc-links">
+                <a href="#">मुख्य मजकुराकडे जा</a>
+                <a href="#"><i class="fas fa-sitemap"></i></a>
+                <a href="#">A+</a> <a href="#">A-</a>
             </div>
         </div>
     </div>
@@ -246,297 +312,368 @@
     <!-- MAIN HEADER -->
     <header>
         <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <img src="https://anikfin.com/Zare/Gallary/GP.png" alt="GP Logo" class="logo-main">
-                    <div class="title-group">
-                        <p>आदर्श ग्रामपंचायत</p>
+            <div class="header-main flex justify-between align-center">
+                <div class="brand-container">
+                    <img src="https://anikfin.com/Zare/Gallary/GP.png" alt="GP Logo" class="logo-img">
+                    <div class="brand-text">
+                        <p>|| स्वराज्य हा माझा जन्मसिद्ध अधिकार आहे ||</p>
                         <h1>ग्रामपंचायत झरे - २</h1>
-                        <small>ता. दोडामार्ग, जि. सिंधुदुर्ग</small>
+                        <p>ता. दोडामार्ग, जि. सिंधुदुर्ग</p>
                     </div>
                 </div>
-                <div class="logo-section hide-mobile">
-                    <img src="https://anikfin.com/Ker/zp.png" alt="ZP Logo" style="height: 70px;">
+                <div class="digital-india hide-mobile">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/95/Digital_India_logo.svg/1200px-Digital_India_logo.svg.png" style="height: 60px;">
                 </div>
             </div>
-            
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#"><i class="fas fa-home"></i> मुख्यपृष्ठ</a></li>
-                    <li><a href="#about"><i class="fas fa-info-circle"></i> आमच्याबद्दल</a></li>
-                    <li><a href="#stats"><i class="fas fa-chart-bar"></i> गाव सांख्यिकी</a></li>
-                    <li><a href="#leaders"><i class="fas fa-users"></i> पदाधिकारी</a></li>
-                    <li><a href="#gallery"><i class="fas fa-images"></i> गॅलरी</a></li>
-                    <li><a href="#contact"><i class="fas fa-phone-alt"></i> संपर्क</a></li>
+        </div>
+        <div class="nav-bg">
+            <div class="container">
+                <ul class="main-nav">
+                    <li class="nav-item active"><a href="#" class="nav-link">मुख्यपृष्ठ</a></li>
+                    <li class="nav-item"><a href="#stats" class="nav-link">गाव सांख्यिकी</a></li>
+                    <li class="nav-item"><a href="#leaders" class="nav-link">नेतृत्व</a></li>
+                    <li class="nav-item"><a href="#staff" class="nav-link">कर्मचारी</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link">गॅलरी</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">संपर्क</a></li>
                 </ul>
-            </nav>
+            </div>
         </div>
     </header>
 
-    <!-- HERO SLIDER -->
-    <section class="hero-wrap">
-        <div id="slider-container">
-            <!-- Background images will load via JS -->
+    <!-- NEWS TICKER -->
+    <div class="news-ticker">
+        <div class="container">
+            <div class="ticker-wrap">
+                <span class="ticker-label"><i class="fas fa-bullhorn"></i> ताज्या बातम्या:</span>
+                <marquee onmouseover="this.stop()" onmouseout="this.start()">
+                    📢 ग्रामपंचायत झरे - २ मध्ये आपले स्वागत आहे... 🏠 घरपट्टी आणि पाणीपट्टी वेळेवर भरून गावच्या विकासात हातभार लावा... 💉 आरोग्य शिबिराचे आयोजन लवकरच करण्यात येईल... ♻️ गाव प्लास्टिक मुक्त करूया, परिसर स्वच्छ ठेवूया...
+                </marquee>
+            </div>
         </div>
-        <div class="hero-text animate__animated animate__fadeInUp">
-            <p>निसर्गरम्य आणि प्रगत</p>
-            <h2>झरे - २</h2>
-            <p>स्वच्छ गाव, सुंदर गाव, आमचे झरे गाव</p>
+    </div>
+
+    <!-- HERO SLIDER -->
+    <section class="hero-section">
+        <div class="slider-container" id="slider">
+            <div class="slide">
+                <img src="https://anikfin.com/Zare/Gallary/01.jpg" alt="Village View 1">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h2>प्रगत आणि डिजिटल झरे-२</h2>
+                        <p>विकासकामांचा नवा अध्याय</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://anikfin.com/Zare/Gallary/03.jpg" alt="Village View 2">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h2>निसर्गरम्य सिंधुदुर्ग</h2>
+                        <p>निसर्गाच्या कुशीत वसलेले आमचे गाव</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://anikfin.com/Zare/Gallary/05.jpg" alt="Village View 3">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h2>लोकसहभागातून विकास</h2>
+                        <p>एकजुटीने प्रगतीकडे वाटचाल</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn btn-prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn btn-next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+    </section>
+
+    <!-- LEADERS SECTION (CM & GOVT) -->
+    <section class="leaders-section" id="leaders">
+        <div class="container">
+            <div class="section-title">
+                <h2>महाराष्ट्र राज्य नेतृत्व</h2>
+                <span>राज्याचे प्रमुख आधारस्तंभ</span>
+            </div>
+            <div class="leader-grid">
+                <div class="leader-card animate__animated animate__fadeInLeft">
+                    <div class="leader-img-wrap">
+                        <img src="https://anikfin.com/Ker/cm.png" alt="Devendra Fadnavis">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-role">माननीय मुख्यमंत्री</span>
+                        <h3 class="leader-name">श्री. देवेंद्र फडणवीस</h3>
+                    </div>
+                </div>
+                <div class="leader-card animate__animated animate__fadeInUp">
+                    <div class="leader-img-wrap">
+                        <img src="https://anikfin.com/Ker/shinde.png" alt="Eknath Shinde">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-role">माननीय उपमुख्यमंत्री</span>
+                        <h3 class="leader-name">श्री. एकनाथ शिंदे</h3>
+                    </div>
+                </div>
+                <div class="leader-card animate__animated animate__fadeInRight">
+                    <div class="leader-img-wrap">
+                        <img src="https://www.loksatta.com/wp-content/uploads/2023/07/Ajit-Pawar-4.jpg" alt="Ajit Pawar">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-role">माननीय उपमुख्यमंत्री</span>
+                        <h3 class="leader-name">श्री. अजित पवार</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PANCHAYAT PADADHIKARI -->
+    <section class="leaders-section" style="background: #f8fafc; border-top: 1px solid #eee;">
+        <div class="container">
+            <div class="section-title">
+                <h2>ग्रामपंचायत पदाधिकारी</h2>
+                <span>गावाचे नेतृत्व</span>
+            </div>
+            <div class="leader-grid">
+                <!-- Sarpanch -->
+                <div class="leader-card">
+                    <div class="leader-img-wrap">
+                        <img src="https://www.anikfin.com/Zare/Shruti.jpg" alt="Shruti Desai">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-role">सरपंच</span>
+                        <h3 class="leader-name">सौ. श्रुती विठ्ठल देसाई</h3>
+                    </div>
+                </div>
+                <!-- Upsarpanch -->
+                <div class="leader-card">
+                    <div class="leader-img-wrap">
+                        <img src="https://www.anikfin.com/Zare/Arjun.jpg" alt="Arjun Ainodkar">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-role">उपसरपंच</span>
+                        <h3 class="leader-name">श्री. अर्जून कृष्णा आयनोडकर</h3>
+                    </div>
+                </div>
+                <!-- Officer -->
+                <div class="leader-card">
+                    <div class="leader-img-wrap">
+                        <img src="https://www.anikfin.com/Zare/Janardhan.jpg" alt="Janardhan Khanolkar">
+                    </div>
+                    <div class="leader-info">
+                        <span class="leader-role">ग्रामपंचायत अधिकारी</span>
+                        <h3 class="leader-name">श्री. जनार्दन बाबाजी खानोलकर</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- STATS SECTION -->
-    <section id="stats" class="stats-section">
+    <section class="stats-section" id="stats">
         <div class="container">
-            <div class="section-header">
-                <h2>गावची सांख्यिकी</h2>
-                <p>झरे-२ ग्रामपंचायतीची महत्त्वाची माहिती</p>
-            </div>
             <div class="stats-grid">
-                <div class="stat-item">
+                <div class="stat-card">
                     <i class="fas fa-users"></i>
-                    <span class="stat-count">851</span>
-                    <span class="stat-label">एकूण लोकसंख्या</span>
+                    <span class="stat-val">851</span>
+                    <span class="stat-lbl">एकूण लोकसंख्या</span>
                 </div>
-                <div class="stat-item">
+                <div class="stat-card">
                     <i class="fas fa-female"></i>
-                    <span class="stat-count">418</span>
-                    <span class="stat-label">गावातील महिला</span>
+                    <span class="stat-val">418</span>
+                    <span class="stat-lbl">स्त्री लोकसंख्या</span>
                 </div>
-                <div class="stat-item">
+                <div class="stat-card">
                     <i class="fas fa-male"></i>
-                    <span class="stat-count">433</span>
-                    <span class="stat-label">गावातील पुरुष</span>
+                    <span class="stat-val">433</span>
+                    <span class="stat-lbl">पुरुष लोकसंख्या</span>
                 </div>
-                <div class="stat-item">
+                <div class="stat-card">
                     <i class="fas fa-id-card"></i>
-                    <span class="stat-count">816</span>
-                    <span class="stat-label">मतदार संख्या</span>
-                </div>
-            </div>
-            
-            <div class="stats-grid" style="margin-top: 30px;">
-                <div class="stat-item">
-                    <i class="fas fa-school"></i>
-                    <span class="stat-count">1 / 1</span>
-                    <span class="stat-label">प्राथमिक / माध्यमिक शाळा</span>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-baby"></i>
-                    <span class="stat-count">2</span>
-                    <span class="stat-label">अंगणवाडी संख्या</span>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-faucet"></i>
-                    <span class="stat-count">2</span>
-                    <span class="stat-label">नळयोजना</span>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-hospital-alt"></i>
-                    <span class="stat-count">1</span>
-                    <span class="stat-label">आरोग्य उपकेंद्र</span>
+                    <span class="stat-val">816</span>
+                    <span class="stat-lbl">एकूण मतदार</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- LEADERS SECTION -->
-    <section id="leaders" style="padding: 80px 0; background: #f8fafc;">
+    <!-- VILLAGE INFO TABLE -->
+    <section class="village-info-section">
         <div class="container">
-            <div class="section-header">
-                <h2>ग्रामपंचायत पदाधिकारी</h2>
-                <p>लोकनियुक्त प्रतिनिधी</p>
+            <div class="section-title">
+                <h2>गावाचे तपशील</h2>
+                <span>झरे - २ सांख्यिकी माहिती</span>
             </div>
-            
-            <div class="leader-container">
-                <!-- Sarpanch -->
-                <div class="leader-card">
-                    <div class="leader-img-box">
-                        <img src="https://www.anikfin.com/Zare/Shruti.jpg" alt="Shruti Desai">
-                    </div>
-                    <div class="leader-info">
-                        <span class="leader-tag">सरपंच</span>
-                        <h3>सौ. श्रुती विठ्ठल देसाई</h3>
-                    </div>
-                </div>
-                
-                <!-- Upsarpanch -->
-                <div class="leader-card">
-                    <div class="leader-img-box">
-                        <img src="https://www.anikfin.com/Zare/Arjun.jpg" alt="Arjun Ainodkar">
-                    </div>
-                    <div class="leader-info">
-                        <span class="leader-tag">उपसरपंच</span>
-                        <h3>श्री. अर्जुन कृष्णा आयनोडकर</h3>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Members Grid -->
-            <div class="staff-grid">
-                <div class="staff-item">
-                    <img src="https://www.anikfin.com/Zare/Approva.jpg" class="staff-avatar">
-                    <div class="staff-details">
-                        <h4>सौ. अपूर्वा अभय ठाकूर</h4>
-                        <p>सदस्य</p>
-                    </div>
-                </div>
-                <div class="staff-item">
-                    <img src="https://www.anikfin.com/Zare/Purva.jpg" class="staff-avatar">
-                    <div class="staff-details">
-                        <h4>सौ. पूर्वा विठ्ठल गवस</h4>
-                        <p>सदस्य</p>
-                    </div>
-                </div>
-                <div class="staff-item">
-                    <img src="https://www.anikfin.com/Zare/Yogita.jpg" class="staff-avatar">
-                    <div class="staff-details">
-                        <h4>सौ. योगिता योगेश शेटवे</h4>
-                        <p>सदस्य</p>
-                    </div>
-                </div>
+            <div class="info-table-wrap mt-50">
+                <table class="info-table">
+                    <tr><td class="info-lbl"><i class="fas fa-tint"></i> एकूण विहिरी</td><td class="info-val">५</td></tr>
+                    <tr><td class="info-lbl"><i class="fas fa-school"></i> जिल्हा परिषद शाळा</td><td class="info-val">१</td></tr>
+                    <tr><td class="info-lbl"><i class="fas fa-university"></i> माध्यमिक शाळा</td><td class="info-val">१</td></tr>
+                    <tr><td class="info-lbl"><i class="fas fa-child"></i> अंगणवाडी</td><td class="info-val">२</td></tr>
+                    <tr><td class="info-lbl"><i class="fas fa-faucet"></i> नळयोजना</td><td class="info-val">२</td></tr>
+                    <tr><td class="info-lbl"><i class="fas fa-hospital"></i> आरोग्य उपकेंद्र</td><td class="info-val">१</td></tr>
+                    <tr><td class="info-lbl"><i class="fas fa-building"></i> तलाठी कार्यालय</td><td class="info-val">१</td></tr>
+                    <tr><td class="info-lbl"><i class="fas fa-envelope"></i> पोस्ट ऑफिस</td><td class="info-val">१</td></tr>
+                </table>
             </div>
         </div>
     </section>
 
     <!-- STAFF SECTION -->
-    <section style="padding: 80px 0; background: white;">
+    <section class="staff-section" id="staff">
         <div class="container">
-            <div class="section-header">
-                <h2>प्रशासकीय कर्मचारी</h2>
-                <p>सेवेसाठी सदैव तत्पर</p>
+            <div class="section-title">
+                <h2>ग्रामपंचायत सदस्य व कर्मचारी</h2>
+                <span>आमची टीम</span>
             </div>
-            
             <div class="staff-grid">
-                <div class="staff-item">
-                    <img src="https://www.anikfin.com/Zare/Janardhan.jpg" class="staff-avatar">
-                    <div class="staff-details">
-                        <h4>श्री. जनार्दन बाबाजी खानोलकर</h4>
-                        <p>ग्रामपंचायत अधिकारी</p>
-                    </div>
+                <!-- Member 1 -->
+                <div class="staff-card">
+                    <div class="staff-img-box"><img src="https://www.anikfin.com/Zare/Approva.jpg" alt="Apoorva"></div>
+                    <div class="staff-body"><h4 class="staff-name">सौ. अपूर्वा अभय ठाकूर</h4><span class="staff-role">सदस्य</span></div>
                 </div>
-                <div class="staff-item">
-                    <img src="https://www.anikfin.com/Zare/Manjusha.jpg" class="staff-avatar">
-                    <div class="staff-details">
-                        <h4>श्रीमती मंजुषा मोहन घोगळे</h4>
-                        <p>डेटा ऑपरेटर</p>
-                    </div>
+                <!-- Member 2 -->
+                <div class="staff-card">
+                    <div class="staff-img-box"><img src="https://www.anikfin.com/Zare/Purva.jpg" alt="Purva"></div>
+                    <div class="staff-body"><h4 class="staff-name">सौ. पूर्वा विठ्ठल गवस</h4><span class="staff-role">सदस्य</span></div>
                 </div>
-                <div class="staff-item">
-                    <img src="https://www.anikfin.com/Zare/Akshita.jpg" class="staff-avatar">
-                    <div class="staff-details">
-                        <h4>सौ. अक्षता अमरनाथ सावंत</h4>
-                        <p>हंगामी क्लर्क</p>
-                    </div>
+                <!-- Member 3 -->
+                <div class="staff-card">
+                    <div class="staff-img-box"><img src="https://www.anikfin.com/Zare/Yogita.jpg" alt="Yogita"></div>
+                    <div class="staff-body"><h4 class="staff-name">सौ. योगिता योगेश शेटवे</h4><span class="staff-role">सदस्य</span></div>
                 </div>
-                <div class="staff-item">
-                    <img src="https://www.anikfin.com/Zare/Arpita.jpg" class="staff-avatar">
-                    <div class="staff-details">
-                        <h4>सौ. अर्पिता आनंद सावंत</h4>
-                        <p>रोजगार सेवक</p>
-                    </div>
+                <!-- Operator -->
+                <div class="staff-card">
+                    <div class="staff-img-box"><img src="https://www.anikfin.com/Zare/Manjusha.jpg" alt="Manjusha"></div>
+                    <div class="staff-body"><h4 class="staff-name">मंजुषा मोहन घोगळे</h4><span class="staff-role">डेटा ऑपरेटर</span></div>
                 </div>
-                <div class="staff-item">
-                    <img src="https://www.anikfin.com/Zare/Deepak.jpg" class="staff-avatar">
-                    <div class="staff-details">
-                        <h4>श्री. दिपक रामचंद राणे</h4>
-                        <p>शिपाई</p>
-                    </div>
+                <!-- Clerk -->
+                <div class="staff-card">
+                    <div class="staff-img-box"><img src="https://www.anikfin.com/Zare/Akshita.jpg" alt="Akshita"></div>
+                    <div class="staff-body"><h4 class="staff-name">अक्षता अमरनाथ सावंत</h4><span class="staff-role">हंगामी क्लर्क</span></div>
                 </div>
-                <div class="staff-item">
-                    <img src="https://www.anikfin.com/Zare/Ulhas.jpg" class="staff-avatar">
-                    <div class="staff-details">
-                        <h4>श्री. उल्हास सावंत</h4>
-                        <p>कर्मचारी</p>
-                    </div>
+                <!-- Rojgar -->
+                <div class="staff-card">
+                    <div class="staff-img-box"><img src="https://www.anikfin.com/Zare/Arpita.jpg" alt="Arpita"></div>
+                    <div class="staff-body"><h4 class="staff-name">अर्पिता आनंद सावंत</h4><span class="staff-role">रोजगार सेवक</span></div>
+                </div>
+                <!-- Peon -->
+                <div class="staff-card">
+                    <div class="staff-img-box"><img src="https://www.anikfin.com/Zare/Deepak.jpg" alt="Deepak"></div>
+                    <div class="staff-body"><h4 class="staff-name">श्री. दिपक रामचंद राणे</h4><span class="staff-role">शिपाई</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- GALLERY SECTION -->
-    <section id="gallery" style="padding: 80px 0; background: #f1f5f9;">
+    <section class="gallery-section" id="gallery">
         <div class="container">
-            <div class="section-header">
-                <h2>छायाचित्र गॅलरी</h2>
-                <p>गावातील काही क्षणचित्रे आणि विकासकामे</p>
+            <div class="section-title">
+                <h2>छायाचित्र दालन</h2>
+                <span>गावातील विकासकामांचे फोटो</span>
             </div>
-            <div class="gallery-grid" id="photoGallery">
-                <!-- Loaded via JS -->
+            <div class="gallery-grid" id="gallery-container">
+                <!-- Generating with JS for efficiency -->
+            </div>
+        </div>
+    </section>
+
+    <!-- GOVT LINKS -->
+    <section class="govt-links-section">
+        <div class="container">
+            <div class="links-flex">
+                <a href="https://www.india.gov.in/" target="_blank" class="gov-link-item">
+                    <img src="https://www.india.gov.in/sites/upload_files/npi/files/logo_1.png" alt="India Govt">
+                    <p>भारत सरकार</p>
+                </a>
+                <a href="https://www.maharashtra.gov.in/" target="_blank" class="gov-link-item">
+                    <img src="https://maharashtra.gov.in/Sitemap/maharashtra/pdf/GOM_Logo.png" alt="Maha Govt">
+                    <p>महाराष्ट्र शासन</p>
+                </a>
+                <a href="https://rts.mahaonline.gov.in/" target="_blank" class="gov-link-item">
+                    <img src="https://aaplesarkar.mahaonline.gov.in/Images/Aaple_Sarkar_logo.png" alt="Aaple Sarkar">
+                    <p>आपले सरकार</p>
+                </a>
+                <a href="https://swachhbharatmission.gov.in/" target="_blank" class="gov-link-item">
+                    <img src="https://swachhbharatmission.gov.in/sbm-cms/writereaddata/Portal/Images/SBM_Logo.png" alt="SBM">
+                    <p>स्वच्छ भारत</p>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>ग्रामपंचायत झरे - २</h3>
-                    <p>मु. पो. झरे - २, तालुका दोडामार्ग, जिल्हा सिंधुदुर्ग - ४१६५१२</p>
-                    <p>आमचा गाव, आमचा अभिमान. सर्वांगीण विकासासाठी आम्ही कटिबद्ध आहोत.</p>
+                    <p>आमचा गाव, आमचा अभिमान. आम्ही झरे-२ च्या सर्वांगीण विकासासाठी सदैव कार्यरत आहोत. डिजिटल इंडियाच्या माध्यमातून ग्रामपंचायत सेवा आता आपल्या दारी.</p>
                 </div>
                 <div class="footer-col">
-                    <h3>उपयुक्त माहिती</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> तलाठी कार्यालय: उपलब्ध</p>
-                    <p><i class="fas fa-mail-bulk"></i> पोस्ट ऑफिस: झरे २</p>
-                    <p><i class="fas fa-tint"></i> एकूण विहिरी: ५</p>
+                    <h3>महत्त्वाच्या लिंक्स</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> मुख्यपृष्ठ</a></li>
+                        <li><a href="#stats"><i class="fas fa-chevron-right"></i> गाव सांख्यिकी</a></li>
+                        <li><a href="#leaders"><i class="fas fa-chevron-right"></i> पदाधिकारी</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> गॅलरी</a></li>
+                    </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>संपर्क साधा</h3>
-                    <p>ईमेल: <a href="mailto:info@zare2gp.in" class="contact-link">info@zare2gp.in</a></p>
-                    <p>वेबसाईट: <a href="#" class="contact-link">www.zare2gp.in</a></p>
+                    <h3>संपर्क माहिती</h3>
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>मु. पो. झरे - २, ता. दोडामार्ग, <br>जिल्हा सिंधुदुर्ग, महाराष्ट्र - ४१६५१२</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>contact@zare2gp.gov.in</p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="copy-bar">
-                <p>&copy; 2025 ग्रुप ग्रामपंचायत झरे-२. सर्व हक्क राखीव. | Design by Umesh (8007773888)</p>
+            <div class="copyright-area">
+                <p>&copy; 2025 ग्रामपंचायत झरे-२. सर्व हक्क राखीव. <br> Design & Maintenance by <b>Umesh (8007773888)</b></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // 1. Current Date Display
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('currentDate').innerText = new Date().toLocaleDateString('mr-IN', dateOptions);
-
-        // 2. Hero Slider Logic
-        const sliderImgs = [
-            "https://anikfin.com/Zare/Gallary/01.jpg",
-            "https://anikfin.com/Zare/Gallary/03.jpg",
-            "https://anikfin.com/Zare/Gallary/05.jpg",
-            "https://anikfin.com/Zare/Gallary/08.jpg"
-        ];
-        
-        const sliderCont = document.getElementById('slider-container');
-        sliderImgs.forEach((img, idx) => {
-            const div = document.createElement('div');
-            div.className = `hero-slide ${idx === 0 ? 'active' : ''}`;
-            div.style.backgroundImage = `url('${img}')`;
-            sliderCont.appendChild(div);
-        });
-
+        // --- HERO SLIDER LOGIC ---
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 5000);
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
 
-        // 3. Dynamic Gallery Loading (01.jpg to 10.jpg)
-        const galleryGrid = document.getElementById('photoGallery');
-        for(let i=1; i<=10; i++) {
-            const imgNum = i < 10 ? `0${i}` : i;
-            const item = `
-                <div class="gallery-item animate__animated animate__zoomIn">
-                    <img src="https://anikfin.com/Zare/Gallary/${imgNum}.jpg" alt="Zhare Gallery ${i}">
-                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-            `;
-            galleryGrid.innerHTML += item;
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
+
+        // Auto Slide
+        setInterval(() => moveSlide(1), 6000);
+
+        // --- GALLERY GENERATOR ---
+        const galleryContainer = document.getElementById('gallery-container');
+        for (let i = 1; i <= 10; i++) {
+            let imgNum = i < 10 ? `0${i}` : i;
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `
+                <img src="https://anikfin.com/Zare/Gallary/${imgNum}.jpg" alt="Zhare Gallery ${i}">
+                <div class="gallery-cap">ग्रामपंचायत झरे-२ छायाचित्र ${i}</div>
+            `;
+            galleryContainer.appendChild(item);
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
-<!-- END OF FILE -->
